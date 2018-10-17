@@ -21,79 +21,117 @@ library(dplyr)
 #filter: the first argument is the data frame; the second argument is the condition by which we want it subsetted. The result is the entire data frame with only the rows we wanted.
 #select: the first argument is the data frame; the second argument is the names of the columns we want selected from it. We don’t have to use the names() function, and we don’t even have to use quotation marks. We simply list the column names as objects.
 
-colint <-select(filter(data, V3 == 1, V2 == 1),c(V17, V18, V19, V20, V21, V22))
 
+# GENERO MASCULINO
+colint <-select(filter(data, V3 == 1, V24 == 1),c(V17, V18, V19, V20, V21, V22))
+
+# tally() is short-hand for summarise()
+colint %>% tally()
+
+# count() is a short-hand for group_by() + tally()
+colint %>% count(V17, V18, V19, V20, V21, V22)
+colint %>% count(V17)
+colint %>% count(V18)
+colint %>% count(V19)
+colint %>% count(V20)
+colint %>% count(V21)
+colint %>% count(V22)
+
+colint %>%
+group_by (V17) %>%
+summarise (n=n()) %>%
+mutate(rel.freq = paste0(round(100 * n/sum(n), 0), "%")) %>%
+ungroup() %>%
+mutate(row.tot = sum(n))
 
+# GENERO FEMININO
+colint2 <-select(filter(data, V3 == 1, V24 == 2),c(V17, V18, V19, V20, V21, V22))
 
-#Transforming raw variables
-Well that certainly removes a lot of rows, we went from 918 to 317 participants! Now that we have filtered
-out all unwanted participants, we can look at restructuring our data so that we can test our hypothesis. The
-questions for the math test were multiple choice questions with 5 answer options, as such all answers are
-coded in numbers 1:5, but we are actually only interested in whether a question was answered correctly or
-not. We need to recode all answers to either 0 (incorrect) or 1 (correct). We can do this using a simple for
-loop!
+# tally() is short-hand for summarise()
+colint2 %>% tally()
 
+# count() is a short-hand for group_by() + tally()
+colint2 %>% count(V17, V18, V19, V20, V21, V22)
+colint2 %>% count(V17)
+colint2 %>% count(V18)
+colint2 %>% count(V19)
+colint2 %>% count(V20)
+colint2 %>% count(V21)
+colint2 %>% count(V22)
 
-#Transforming raw variables
-# First we create a list with the correct answer options to each question, so we can iterate through it in our for loop.
-ans <- list(V17 = 3, V18 = 3, V19 = 1, V20 = 2, V21 = 1, V22 = 4)
+colint2 %>%
+group_by (V17) %>%
+summarise (n=n()) %>%
+mutate(rel.freq = paste0(round(100 * n/sum(n), 0), "%")) %>%
+ungroup() %>%
+mutate(row.tot = sum(n))
 
-# Now we iterate through our all of the math questions and recode them. If the answer is correct, we code it as a 1, otherwise it's a 0.
-for (i in names(ans)){
-for (j in 1:nrow(colint)){
-if (colint[, i][j] == ans[i]){
-if (is.null(x) || x == '') {
-colint[, i][j] <- 1
-} else {
-colint[, i][j] <- 0
-}
-}
-}
+# INTERSECÇÃO
+int <-select(filter(data, V3 == 1),c(V24, V17, V18, V19, V20, V21, V22))
 
-# Let's inspect our data to see if it worked
-head(colint[, which(names(colint) == 'V17'):which(names(colint) == 'V22')])
+int %>%
+group_by (V24) %>%
+summarise (n=n()) %>%
+mutate(rel.freq = paste0(round(100 * n/sum(n), 0), "%")) %>%
+ungroup() %>%
+filter(!is.na(V24)) %>%
+mutate(row.tot = sum(n))
 
-Looks like that worked! Now we have to get a sum score on the math test for each participant, so we can
-compare the performance on the math test between groups. We can do this using the which() function like
-we did in the previous block of code to find out which columns we are interested in. After that we use the
-rowSums() function to get a sumscore for every participant, which we will store in our dataST under the
-$sumscore variable.
+int %>%
+group_by (V24, V17, V18, V19, V20, V21, V22) %>%
+summarise (n=n()) %>%
+mutate(rel.freq = paste0(round(100 * n/sum(n), 0), "%")) %>%
+ungroup() %>%
+filter(!is.na(V24)) %>%
+mutate(row.tot = sum(n))
 
-colint$sumscore <- rowSums(colint[, which(names(colint) == 'math1'):which(names(colint) == 'math8')])
 
-# Let's create a histogram to inspect our freshly created sumscore variable!
+gender <-int %>%
+     group_by (V24, V17, V18, V19, V20, V21, V22) %>%
+     summarise (n=n()) %>%
+     mutate(rel.freq = paste0(round(100 * n/sum(n), 0), "%")) %>%
+     ungroup() %>%
+     filter(!is.na(V24)) %>%
+     filter(!is.na(V17)) %>%
+     filter(!is.na(V18)) %>%
+     filter(!is.na(V19)) %>%
+     filter(!is.na(V20)) %>%
+     filter(!is.na(V21)) %>%
+     filter(!is.na(V22)) %>%
+     mutate(row.tot = sum(n))
+summary(gender)
 
-hist(colint$sumscore)
+gender <-int %>%
+     group_by (V24 = 1, V17 = 4, V18 = 3, V19 = 5, V20 = 2, V21 = 1, V22 = 3) %>%
+     summarise (n=n()) %>%
+     mutate(rel.freq = paste0(round(100 * n/sum(n), 0), "%")) %>%
+     ungroup() %>%
+     filter(!is.na(V24)) %>%
+     filter(!is.na(V17)) %>%
+     filter(!is.na(V18)) %>%
+     filter(!is.na(V19)) %>%
+     filter(!is.na(V20)) %>%
+     filter(!is.na(V21)) %>%
+     filter(!is.na(V22)) %>%
+     mutate(row.tot = sum(n))
+summary(gender)     
+     
+     
+ 
+  
 
-# Get some more descriptive statistics for the sumscore variables
-summary(colint$sumscore)
+# REMOVE ROWS WITH MISSING DATA IN R 
+x <- colint[complete.cases(colint), ]
+str(x)
 
-sd(colint$sumscore)
+library(Hmisc)
+Hmisc::describe(colint)
 
 
-Assigning groups
-Now that we have the sumscores for each participant we will assign each participant to a group, so that we
-can compare the two groups! All participants in the control group skipped the $ST.threat question, so they
-will have a value of NA there. Hence, everyone who has a value of NA on the $ST.threat question should
-receive a $condition value of 0, and everyone else should get a value of 1.
 
-# First we will set every participants condition to 1, after that we will change all participants that are in the control condition to a 0.
-colint$condition <- 1
-# Now let's set the control participants to 0.
 
-for (i in 1:nrow(dataST)){
-if (is.na(colint$ST.threat[i])){
-colint$condition[i] <- 0
-}
-}
-table(colint$condition)
 
-Running the analysis
-Looks like our participants are almost 50/50 divided over conditions (as we would expect!). Now that we
-have done all our data manipulation, it’s time to do an analysis! In this example we only look at the t-test
-itself, but in your final submission you should also include assumption checks.
 
-t.test(colint$sumscore ~ colint$condition)
 
 
 
@@ -132,67 +170,6 @@ t.test(colint$sumscore ~ colint$condition)
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-stereo1 <- data[c(10:21),c(2,6:7)]
-
-#To create the new data frame ‘stereo,’ we subsetted the ‘edata data frame by extracting rows 10-21, and columns 2, 6, and 7. Pretty simple, right?
-
-#Another way to subset the data frame with brackets is by omitting row and column references. Take a look at this code:
-stereo2 <- data[-c(1:9,22:50),-c(1,3:5)]
-
-#Here, instead of subsetting the rows and columns we wanted returned, we subsetted the rows and columns we did not want returned and then omitted them with the “-” sign. If we now call stereo1 and stereo2, we can see that both data frames return the same subset of the original education data frame.
 
 
 
