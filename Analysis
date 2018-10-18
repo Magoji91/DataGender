@@ -101,9 +101,9 @@ mutate(row.tot = sum(n))
 
 # CHIQUEST
 
-     Right	Wrong TOTAL
-Men	  99	  39     138
-Women	113	  53     166
+       Right	Wrong   TOTAL
+Men	   99	  39     138
+WomeN  113	  53     166
       
 
 A = matrix( 
@@ -113,7 +113,7 @@ A = matrix(
              byrow = TRUE)        # fill matrix by rows 
 chisq.test(A) 
 
-
+Now, p < 0,05 is the usual test for dependence. In this case p is greater than 0,05, so we believe the variables are independent (ie not linked together).
 
 
 
