@@ -26,6 +26,9 @@ library(dplyr)
 
 
 # GENERO MASCULINO
+
+# PERFOMANCE MATEMÁTICA
+
 colint <-select(filter(data, V3 == 1, V24 == 1),c(V17, V18, V19, V20, V21, V22))
 
 # tally() is short-hand for summarise()
@@ -46,6 +49,21 @@ M1 <- colint %>%
 na.omit %>% 
 filter(V24 == 1, V17 == 1, V18 == 2, V19 == 5, V20 == 1, V21 == 4, V22 == 2 )
 
+# PARTE DAS QUOTES PARA HOMENS
+
+QM <-select(filter(data, V3 == 1, V24 == 1),c(V26, V27, V28, V29, V30))
+
+# tally() is short-hand for summarise()
+QM %>% tally()
+
+# count() is a short-hand for group_by() + tally()
+QM %>%
+group_by (V26, V27, V28, V29, V30) %>%
+summarise (n=n()) %>%
+mutate(rel.freq = paste0(round(100 * n/sum(n), 0), "%")) %>%
+ungroup() %>%
+mutate(row.tot = sum(n))
+
 # GENERO FEMININO
 colint2 <-select(filter(data, V3 == 1, V24 == 2),c(V17, V18, V19, V20, V21, V22))
 
@@ -65,6 +83,35 @@ intf1 <-select(filter(colint2, V17 == 1, V18 == 2, V19 == 5, V20 == 1, V21 == 4,
 F1 <- colint2 %>%
 na.omit %>% 
 filter(V17 == 1, V18 == 2, V19 == 5, V20 == 1, V21 == 4, V22 == 2 )
+
+# PARTE DAS QUOTES PARA MULHERES
+
+QF <-select(filter(data, V3 == 1, V24 == 2),c(V26, V27, V28, V29, V30))
+
+# tally() is short-hand for summarise()
+QF %>% tally()
+
+# count() is a short-hand for group_by() + tally()
+QF %>%
+group_by (V26, V27, V28, V29, V30) %>%
+summarise (n=n()) %>%
+mutate(rel.freq = paste0(round(100 * n/sum(n), 0), "%")) %>%
+ungroup() %>%
+mutate(row.tot = sum(n))
+
+# CHIQUEST
+
+     Right	Wrong TOTAL
+Men	  99	  39     138
+Women	113	  53     166
+      
+
+A = matrix( 
+          c(99, 39, 113, 53), # the data elements 
+            nrow=2,              # number of rows 
+            ncol=2,              # number of columns 
+             byrow = TRUE)        # fill matrix by rows 
+chisq.test(A) 
 
 
 
