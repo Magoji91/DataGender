@@ -1,7 +1,10 @@
 #Import Data
-data <- read.csv("C:/Users/smsanda/Downloads/data.csv", header=FALSE, sep=";")
-View(data)
+data18 <- read.csv("C:/Users/smsanda/Downloads/data18.csv", header=FALSE, sep=";")
+View(data18)
+str(data18)
 
+data<-data18[complete.cases(data18), ]
+str(data)
 
 head(data) # Print the first few, or last few, lines of a mdm object
 str(data) #check the variables / Get a summary of an object’s structure
@@ -29,20 +32,19 @@ colint <-select(filter(data, V3 == 1, V24 == 1),c(V17, V18, V19, V20, V21, V22))
 colint %>% tally()
 
 # count() is a short-hand for group_by() + tally()
-colint %>% count(V17, V18, V19, V20, V21, V22)
-colint %>% count(V17)
-colint %>% count(V18)
-colint %>% count(V19)
-colint %>% count(V20)
-colint %>% count(V21)
-colint %>% count(V22)
-
 colint %>%
 group_by (V17) %>%
 summarise (n=n()) %>%
 mutate(rel.freq = paste0(round(100 * n/sum(n), 0), "%")) %>%
 ungroup() %>%
 mutate(row.tot = sum(n))
+
+intm <-select(filter(colint, V17 == 1, V18 == 2, V19 == 5, V20 == 1, V21 == 4, V22 == 2 ),c(V17, V18, V19, V20, V21, V22))
+View(intm)
+
+M1 <- colint %>%
+na.omit %>% 
+filter(V24 == 1, V17 == 1, V18 == 2, V19 == 5, V20 == 1, V21 == 4, V22 == 2 )
 
 # GENERO FEMININO
 colint2 <-select(filter(data, V3 == 1, V24 == 2),c(V17, V18, V19, V20, V21, V22))
@@ -51,14 +53,6 @@ colint2 <-select(filter(data, V3 == 1, V24 == 2),c(V17, V18, V19, V20, V21, V22)
 colint2 %>% tally()
 
 # count() is a short-hand for group_by() + tally()
-colint2 %>% count(V17, V18, V19, V20, V21, V22)
-colint2 %>% count(V17)
-colint2 %>% count(V18)
-colint2 %>% count(V19)
-colint2 %>% count(V20)
-colint2 %>% count(V21)
-colint2 %>% count(V22)
-
 colint2 %>%
 group_by (V17) %>%
 summarise (n=n()) %>%
@@ -66,66 +60,15 @@ mutate(rel.freq = paste0(round(100 * n/sum(n), 0), "%")) %>%
 ungroup() %>%
 mutate(row.tot = sum(n))
 
-# INTERSECÇÃO
-int <-select(filter(data, V3 == 1),c(V24, V17, V18, V19, V20, V21, V22))
+intf1 <-select(filter(colint2, V17 == 1, V18 == 2, V19 == 5, V20 == 1, V21 == 4, V22 == 2 ),c(V17, V18, V19, V20, V21, V22))
 
-int %>%
-group_by (V24) %>%
-summarise (n=n()) %>%
-mutate(rel.freq = paste0(round(100 * n/sum(n), 0), "%")) %>%
-ungroup() %>%
-filter(!is.na(V24)) %>%
-mutate(row.tot = sum(n))
-
-int %>%
-group_by (V24, V17, V18, V19, V20, V21, V22) %>%
-summarise (n=n()) %>%
-mutate(rel.freq = paste0(round(100 * n/sum(n), 0), "%")) %>%
-ungroup() %>%
-filter(!is.na(V24)) %>%
-mutate(row.tot = sum(n))
+F1 <- colint2 %>%
+na.omit %>% 
+filter(V17 == 1, V18 == 2, V19 == 5, V20 == 1, V21 == 4, V22 == 2 )
 
 
-gender <-int %>%
-     group_by (V24, V17, V18, V19, V20, V21, V22) %>%
-     summarise (n=n()) %>%
-     mutate(rel.freq = paste0(round(100 * n/sum(n), 0), "%")) %>%
-     ungroup() %>%
-     filter(!is.na(V24)) %>%
-     filter(!is.na(V17)) %>%
-     filter(!is.na(V18)) %>%
-     filter(!is.na(V19)) %>%
-     filter(!is.na(V20)) %>%
-     filter(!is.na(V21)) %>%
-     filter(!is.na(V22)) %>%
-     mutate(row.tot = sum(n))
-summary(gender)
 
-gender <-int %>%
-     group_by (V24 = 1, V17 = 4, V18 = 3, V19 = 5, V20 = 2, V21 = 1, V22 = 3) %>%
-     summarise (n=n()) %>%
-     mutate(rel.freq = paste0(round(100 * n/sum(n), 0), "%")) %>%
-     ungroup() %>%
-     filter(!is.na(V24)) %>%
-     filter(!is.na(V17)) %>%
-     filter(!is.na(V18)) %>%
-     filter(!is.na(V19)) %>%
-     filter(!is.na(V20)) %>%
-     filter(!is.na(V21)) %>%
-     filter(!is.na(V22)) %>%
-     mutate(row.tot = sum(n))
-summary(gender)     
-     
-     
- 
-  
 
-# REMOVE ROWS WITH MISSING DATA IN R 
-x <- colint[complete.cases(colint), ]
-str(x)
-
-library(Hmisc)
-Hmisc::describe(colint)
 
 
 
