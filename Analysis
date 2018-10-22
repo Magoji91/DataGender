@@ -269,8 +269,19 @@ B = matrix(
              byrow = TRUE)        # fill matrix by rows 
 chisq.test(B) 
 
- t.test(qmm,qmf,paired=TRUE)
+
  var.test(qmm, qmf)
+ 
+# Tests to see if is significant your sample!
+#The F value indicates the ratio of the variance of the group means to that of the pooled within group variance. The larger the F value the greater the relative variance among the group means. The p value tells you the probability of obtaining an F value as extreme or more extreme as the one observed under the assumption that the null hypothesis is true. 
+
+var.test(qmm, qmf)
+
+# T-TEST - Se estivermos usando nível de confiança de 95%, rejeitaríamos a hipótese nula caso:
+A probabilidade obtida com o t calculado (-1.1538) é inferior ao "ponto de corte" do p-valor (0.4546), ou
+t.test(qmm,qmf,paired=TRUE)
+
+#The p-value is more than the alpha level: p >.05. We cannot reject the null hypothesis that there is difference between means.
 
 
 
