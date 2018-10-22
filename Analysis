@@ -274,15 +274,44 @@ chisq.test(B)
  
 # Tests to see if is significant your sample!
 #The F value indicates the ratio of the variance of the group means to that of the pooled within group variance. The larger the F value the greater the relative variance among the group means. The p value tells you the probability of obtaining an F value as extreme or more extreme as the one observed under the assumption that the null hypothesis is true. 
+#The F statistic came out to 0.8295. This being said, we fail to reject our null hypothesis.
 
 var.test(qmm, qmf)
 
-# T-TEST - Se estivermos usando nível de confiança de 95%, rejeitaríamos a hipótese nula caso:
-A probabilidade obtida com o t calculado (-1.1538) é inferior ao "ponto de corte" do p-valor (0.4546), ou
-t.test(qmm,qmf,paired=TRUE)
+# T-TEST - avaliar as diferenças entre as médias entre dois grupos
 
-#The p-value is more than the alpha level: p >.05. We cannot reject the null hypothesis that there is difference between means.
+#A large p-value (> 0.05) indicates weak evidence against the null hypothesis, so you fail to reject the null hypothesis.
 
+#In statistics, t-tests are used to compare the means of two groups. Although a negative t-value shows a reversal in the directionality of the effect being studied, it has no impact on the significance of the difference between groups of data.
+
+#The larger the t-score, the more difference there is between groups. The smaller the t-score, the more similarity there is between groups.
+
+#A negative t-value indicates a reversal in the directionality of the effect, which has no bearing on the significance of the difference between groups. Analysis of a negative t-value requires examination of its absolute value in comparison to the value on a table of t-values and degrees of freedom, which quantifies the variability of the final estimated number. If the absolute value of the experimental t-value is smaller than the value found on the degrees of freedom chart, then the means of the two groups can be said to be significantly different.
+
+#Unfortunately for the researchers, there is always the possibility that there is no effect, that is, that there is no difference between the groups. This lack of a difference is called the null hypothesis.
+
+#The null hypothesis is true: there is no difference between the experimental groups at the population level.
+
+#A low P value suggests that your sample provides enough evidence that you can reject the null hypothesis for the entire population.
+
+#First, P values are calculated based on the assumptions that the null is true for the population and that the difference in the sample is caused entirely by random chance.
+
+#Second, while a low P value indicates that your data are unlikely assuming a true null, it can’t evaluate which of two competing cases is more likely:
+The null is true but your sample was unusual.
+The null is false.
+
+#Let’s go back to the vaccine study and compare the correct and incorrect way to interpret the P value of 0.04:
+
+#Correct: Assuming that the vaccine had no effect, you’d obtain the observed difference or more in 4% of studies due to random sampling error. 
+#Incorrect: If you reject the null hypothesis, there’s a 4% chance that you’re making a mistake.
+
+# anova(fit)
+
+#You probably don't have enough individuals per group.
+#Warning messages in R output show up after you run functions that contain problems and are generally not a good thing, but can sometimes be ignored. In this case, the warning message is not needed – there are no  
+F -statistics or p-values in the results so we know there are some issues with the results. The Residuals line is key here – Residuals with 0 df and sums of squares of 0. Without replication, there are no degrees of freedom left to estimate the residual error. My first statistics professor, Gordon Bril at Luther College, used to refer to this as “shooting your load” by fitting too many terms in the model given the number of observations available. Maybe this is a bit graphic but hopefully will help you remember the need for replication if you want to estimate interactions – it did for me. Without replication of observations, we run out of information to estimate and test all the desired model components.
+
+So what can we do if we can’t afford replication but want to study two variables in the same study? We can assume that the interaction does not exist and use those degrees of freedom and variability as the error variability. 
 
 
 
