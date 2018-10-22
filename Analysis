@@ -207,9 +207,6 @@ chisq.test(A)
 
 Now, p < 0,05 is the usual test for dependence. In this case p is greater than 0,05, so we believe the variables are independent (ie not linked together).
 
-t.test(mm,mf,paired=TRUE)
-var.test(mm, mf)
-
 No tempo em que não se tinha computadores pararíamos a interpretação nesse ponto, qual seja, se o t calculado é maior que o t tabelado rejeitamos H0 pois apesar de não sabermos qual é a área da curva à direita de 3,01 e à esquerda de -3,01 sabemos que ela é menor que 5% já que para totalizar 5% é necessária a área que vai desde 2,26 até +infinito somada à área que vai de -2,26 até –infinito.
 
  O valor-p indica a probabilidade de se observar uma diferença tão grande ou maior do que a que foi observada sob
@@ -221,10 +218,60 @@ real. Como definimos o nível de significância de 5%, a hipótese nula não dev
 
 Na prática, considera-se satisfatório o limite de 5% de probabilidade de erro, não sendo significativas as diferenças que tiverem uma probabilidade acima desse limite.
 
+t.test(mm,mf,paired=TRUE)
+var.test(mm, mf)
+
 An F statistic is a value you get when you run an ANOVA test or a regression analysis to find out if the means between two populations are significantly different. It’s similar to a T statistic from a T-Test; A-T test will tell you if a single variable is statistically significant and an F test will tell you if a group of variables are jointly significant.
 
 Why?
 The F value should always be used along with the p value in deciding whether your results are significant enough to reject the null hypothesis. If you get a large f value (one that is bigger than the F critical value found in a table), it means something is significant, while a small p value means all your results are significant. The F statistic just compares the joint effect of all the variables together. To put it simply, reject the null hypothesis only if your alpha level is larger than your p value.
+
+CHIQUEST - QUOTES
+
+QM <-select(filter(data, V3 == 1, V24 == 1),c(V26, V27, V28, V29, V30))
+
+# tally() is short-hand for summarise()
+QM %>% tally()
+
+qm26<-table(QM$V26 == 5)
+qm27<-table(QM$V27 == 5)
+qm28<-table(QM$V28 == 5)
+qm29<-table(QM$V29 == 5)
+qm30<-table(QM$V30 == 5)
+
+cbind(qm26, qm27, qm28, qm29, qm30)
+qmm<-rowSums(cbind(qm26, qm27, qm28, qm29, qm30), na.rm=TRUE)
+
+
+QF <-select(filter(data, V3 == 1, V24 == 2),c(V26, V27, V28, V29, V30))
+
+qm26<-table(QF$V26 == 5)
+qm27<-table(QF$V27 == 5)
+qm28<-table(QF$V28 == 5)
+qm29<-table(QF$V29 == 5)
+qm30<-table(QF$V30 == 5)
+
+# tally() is short-hand for summarise()
+QF %>% tally()
+
+cbind(qm26, qm27, qm28, qm29, qm30)
+qmf<-rowSums(cbind(qm26, qm27, qm28, qm29, qm30), na.rm=TRUE)
+
+      Right	Wrong   TOTAL
+Men	 54	  61    
+WomeN   68	  62   
+      
+
+B = matrix( 
+          c(54, 61, 68, 62), # the data elements 
+            nrow=2,              # number of rows 
+            ncol=2,              # number of columns 
+             byrow = TRUE)        # fill matrix by rows 
+chisq.test(B) 
+
+ t.test(qmm,qmf,paired=TRUE)
+ var.test(qmm, qmf)
+
 
 
 
