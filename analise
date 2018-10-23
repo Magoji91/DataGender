@@ -1,0 +1,112 @@
+library(readxl)
+data <- read_excel("C:/Users/smsanda/Pictures/data.xlsx")
+View(data)
+
+
+head(data) # Print the first few, or last few, lines of a mdm object
+str(data) #check the variables / Get a summary of an object’s structure
+summary(data) #Get more detailed information out a model.
+dim(data) #check dimesions ( number of row & columns) in data set
+ls(data) # List all variables in the environment.
+table(is.na(data)) # See counts of missing values
+colSums(is.na(data)) # missing value in data exploration stages.
+unique(data) #See unique values.
+
+#Subsetting data
+# Select only the variables that you are interested in.
+
+#GENERO MASCULINO - MATEMÁTICA
+library(dplyr)
+
+genmascmat<-select(filter(data, consent == 1, gender == 1),c(I, II, III, IV, V))
+M1<-table(genmascmat$I ==1)
+M2<-table(genmascmat$II ==1)
+M3<-table(genmascmat$III ==1)
+M4<-table(genmascmat$IV ==1)
+M5<-table(genmascmat$V ==1)
+
+cbind(M1, M2, M3, M4, M5)
+mm<-rowSums(cbind(M1, M2, M3, M4, M5), na.rm=TRUE)
+
+
+#GENERO FEMININO - MATEMÁTICA
+genfemat<-select(filter(data, consent == 1, gender == 2),c(I, II, III, IV, V))
+F1<-table(genfemat$I ==1)
+F2<-table(genfemat$II ==1)
+F3<-table(genfemat$III ==1)
+F4<-table(genfemat$IV ==1)
+F5<-table(genfemat$V ==1)
+
+cbind(F1, F2, F3, F4, F5)
+mf<-rowSums(cbind(F1, F2, F3, F4, F5), na.rm=TRUE)
+
+
+      Right	Wrong   
+Men	   199   201   
+WomeN  172	 173   
+
+
+A = matrix( 
+          c(199, 201, 172, 173), # the data elements 
+            nrow=2,              # number of rows 
+            ncol=2,              # number of columns 
+             byrow = TRUE)        # fill matrix by rows 
+chisq.test(A) 
+
+t.test(mm,mf,paired=TRUE)
+
+var.test(mm, mf)
+
+# A large p-value (> 0.05) indicates weak evidence against the null hypothesis, so you fail to reject the null hypothesis.
+#A negative t-value indicates a reversal in the directionality of the effect, which has no bearing on the significance of the difference between groups. Analysis of a negative t-value requires examination of its absolute value in comparison to the value on a table of t-values and degrees of freedom, which quantifies the variability of the final estimated number. If the absolute value of the experimental t-value is smaller than the value found on the degrees of freedom chart, then the means of the two groups can be said to be significantly different.
+# The p-value of F-test is p = 0.5903 which is greater than the significance level 0.05. In conclusion, there is no significant difference between the two variances
+
+
+#ANÁLISE DAS FRASES
+
+# GENERO MASCULINO
+QM<-select(filter(data, consent == 1, gender == 1),c(VI, VII, VIII, IX, X, XI))
+qm6<-table(QM$VI == 1)
+qm7<-table(QM$VII == 1)
+qm8<-table(QM$VIII == 1)
+qm9<-table(QM$IX == 1)
+qm10<-table(QM$X == 1)
+qm11<-table(QM$XI == 1)
+
+cbind(qm6, qm7, qm8, qm9, qm10, qm11)
+MQR<-rowSums(cbind(qm6, qm7, qm8, qm9, qm10, qm11), na.rm=TRUE)
+
+# GENERO FEMININO
+QF<-select(filter(data, consent == 1, gender == 2),c(VI, VII, VIII, IX, X, XI))
+qm6<-table(QF$VI == 1)
+qm7<-table(QF$VII == 1)
+qm8<-table(QF$VIII == 1)
+qm9<-table(QF$IX == 1)
+qm10<-table(QF$X == 1)
+qm11<-table(QF$XI == 1)
+
+cbind(qm6, qm7, qm8, qm9, qm10, qm11)
+FQR<-rowSums(cbind(qm6, qm7, qm8, qm9, qm10, qm11), na.rm=TRUE)
+
+     Right	Wrong   
+Men	   253   269  
+WomeN  201	 225   
+
+
+B = matrix( 
+     c(253, 269, 201, 225), # the data elements 
+     nrow=2,              # number of rows 
+     ncol=2,              # number of columns 
+     byrow = TRUE)        # fill matrix by rows 
+chisq.test(B) 
+
+t.test(MQR,FQR,paired=TRUE)
+
+var.test(MQR, FQR)
+
+
+
+
+
+
+
