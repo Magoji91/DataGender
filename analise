@@ -12,6 +12,64 @@ table(is.na(data)) # See counts of missing values
 colSums(is.na(data)) # missing value in data exploration stages.
 unique(data) #See unique values.
 
+#You can use the loglm( ) function in the MASS package to produce log-linear models. 
+library(MASS)
+attach(data)
+
+A<-data$gender
+table(A)
+table(A, useNA = "ifany")
+prop.table(table(A))
+
+B<-data$birthyear
+table(B)
+table(B, useNA = "ifany")
+prop.table(table(B))
+
+C<-data$education
+table(C)
+table(C, useNA = "ifany")
+prop.table(table(C))
+
+
+D<-data$country
+table(D)
+table(D, useNA = "ifany")
+prop.table(table(D))
+
+
+colint <-select(filter(data, gender == 1),c(education, country, birthyear))
+
+# tally() is short-hand for summarise()
+colint %>% tally()
+
+# count() is a short-hand for group_by() + tally()
+colint %>%
+group_by (A, B, C) %>%
+summarise (n=n()) %>%
+mutate(rel.freq = paste0(round(100 * n/sum(n), 0), "%")) %>%
+ungroup() %>%
+mutate(row.tot = sum(n))
+
+
+
+
+
+
+mytable <- xtabs(~A+B+C+D, data=data) 
+ftable(mytable) # print table 
+summary(mytable) # chi-square test of indepedence
+
+loglm(~A+B+C+D, mytable) #Mutual Independence: A, B, C and D are pairwise independent.
+
+
+
+
+#Análise das idades
+summary(data$birthyear)
+table(gender)#uses the cross-classifying factors to build a contingency table of the counts at each combination of factor levels.
+
+
 #Subsetting data
 # Select only the variables that you are interested in.
 
