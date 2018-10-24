@@ -20,54 +20,71 @@ A<-data$gender
 table(A)
 table(A, useNA = "ifany")
 prop.table(table(A))
+summary(A)
 
+#uses the cross-classifying factors to build a contingency table of the counts at each combination of factor levels.
 B<-data$birthyear
 table(B)
 table(B, useNA = "ifany")
 prop.table(table(B))
+summary(B)
 
 C<-data$education
 table(C)
 table(C, useNA = "ifany")
 prop.table(table(C))
+summary(C)
 
 
 D<-data$country
 table(D)
 table(D, useNA = "ifany")
 prop.table(table(D))
-
+summary(D)
 
 colint <-select(filter(data, gender == 1),c(education, country, birthyear))
-
 # tally() is short-hand for summarise()
 colint %>% tally()
+head(colint)
+summary(colint)
+call<-table(colint)
+summary(call)
 
-# count() is a short-hand for group_by() + tally()
-colint %>%
-group_by (A, B, C) %>%
-summarise (n=n()) %>%
-mutate(rel.freq = paste0(round(100 * n/sum(n), 0), "%")) %>%
-ungroup() %>%
-mutate(row.tot = sum(n))
+#keeps only the variables you mention
+colint %>% 
+    as_data_frame %>%
+    select(education, birthyear, country)
 
+P=1 - Significa uma correlação perfeita positiva entre as duas variáveis.
+P=-1 - Significa uma correlação negativa perfeita entre as duas variáveis - Isto é, se uma aumenta, a outra sempre diminui.
+P=0  - Significa que as duas variáveis não dependem linearmente uma da outra. No entanto, pode existir uma dependência não linear. Assim, o resultado deve ser investigado por outros meios.
 
+cor(colint)
 
+#Observação sobre os Resultados da Covariância
+#Quando covariância é positiva, as duas variáveis analisadas tendem a variar na mesma direção; portanto, se aumenta uma a outra tende a aumentar, ou se uma cai a outra tende a diminuir também. Logo covariância positiva indica que as duas variáveis caminham juntas mediante variações que ocorrerem.
+#Quando houver covariância negativa, neste caso há duas variáveis que tendem a variar em direções opostas; ou seja, se há aumento em uma haverá diminuição na outra, ou se uma diminui a outra tende a aumentar. concluímos que a covariância negativa afirma categoricamente que há oposição com relação aos movimentos das variáveis.
+#Quanto mais próxima de zero for a covariância obtida aplicando-se a fórmula, menor é a possibilidade de encontrar um comportamento de interdependência linear entre as variáveis.
 
+cov(colint)
 
+colint2 <-select(filter(data, gender == 2),c(education, country, birthyear))
+
+# tally() is short-hand for summarise()
+colint2 %>% tally()
+head(colint2)
+summary(colint2)
+call2<-table(colint2)
+summary(call2)
+
+cor(colint2)
+cov(colint2)
 
 mytable <- xtabs(~A+B+C+D, data=data) 
 ftable(mytable) # print table 
 summary(mytable) # chi-square test of indepedence
 
 loglm(~A+B+C+D, mytable) #Mutual Independence: A, B, C and D are pairwise independent.
-
-
-
-
-#Análise das idades
-summary(data$birthyear)
-table(gender)#uses the cross-classifying factors to build a contingency table of the counts at each combination of factor levels.
 
 
 #Subsetting data
