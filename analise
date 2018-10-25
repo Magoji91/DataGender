@@ -3,6 +3,7 @@ data <- read_excel("C:/Users/smsanda/Pictures/data.xlsx")
 View(data)
 data<-data18
 
+library(dplyr)
 
 head(data) # Print the first few, or last few, lines of a mdm object
 str(data) #check the variables / Get a summary of an object’s structure
@@ -42,37 +43,13 @@ table(D, useNA = "ifany")
 hist(table(D))
 summary(D)
 
-# Representação gráfica
-plot(A, B)
-hist(A,
-+      breaks = 40,
-+      xlab = "Birth Weight",
-+      main = "Histogram of Unicorn Birth Weight")
-plot(A, B, type = "l", lty = "dashed")
+#The creation of frequency and contingency tables from categorical variables, along with tests of independence, measures of association, and methods for graphically displaying results.
 
-plot(D, B, 
-      type = "l", 
-     col = "red", 
-      lwd = 3,
-     xlab = "Year",
-      ylab = "Population Size",
-      main = "Moomin Population Size on Ruissalo 1971 - 2001")
-    
-plot(A, D,         # x variable, y variable
-     col = A,                          # colour by species
-     main = "A vs D")      # plot title    
-     
-boxplot(A, D) 
-
-barplot(A, names =D, 
-        ylim=c(0,70),xlim=c(0,4),yaxs='i', xaxs='i',
-        main="Dragon Talon Length in the UK",
-        ylab="Mean Talon Length",
-        xlab="Country")
-     
+Generating Frequency Tables
+R provides many methods for creating frequency and contingency tables. Three are described below. In the following examples, assume that A, B, and C represent categorical variables.  
 
 mytable <- xtabs(~A+B+C+D, data=data) 
-ftable(mytable) # print table 
+hist(mytable)
 summary(mytable) # chi-square test of indepedence
 
 loglm(~A+B+C+D, mytable) #Mutual Independence: A, B, C and D are pairwise independent.
@@ -113,12 +90,6 @@ summary(call2)
 cor(colint2)
 cov(colint2)
 
-mytable <- xtabs(~A+B+C+D, data=data) 
-ftable(mytable) # print table 
-summary(mytable) # chi-square test of indepedence
-
-loglm(~A+B+C+D, mytable) #Mutual Independence: A, B, C and D are pairwise independent.
-
 
 #Subsetting data
 # Select only the variables that you are interested in.
@@ -154,7 +125,7 @@ Men	   199   201
 WomeN  172	 173   
 
 
-A = matrix( 
+AM = matrix( 
           c(199, 201, 172, 173), # the data elements 
             nrow=2,              # number of rows 
             ncol=2,              # number of columns 
@@ -201,7 +172,7 @@ Men	   253   269
 WomeN  201	 225   
 
 
-B = matrix( 
+FB = matrix( 
      c(253, 269, 201, 225), # the data elements 
      nrow=2,              # number of rows 
      ncol=2,              # number of columns 
@@ -212,9 +183,44 @@ t.test(MQR,FQR,paired=TRUE)
 
 var.test(MQR, FQR)
 
+# Creating a Graph
+attach(colint)
+plot(gender, education) 
+abline(lm(gender~education))
+title("Gender x Education")
+    
+plot(A, B,         # x variable, y variable
+     col = A,                          # colour by species
+     main = "A vs B")      # plot title    
+     
+boxplot(A, B) 
+boxplot(A, C)
+boxplot(A, D) 
+barplot(A, B)
+barplot(as.matrix(colint), main="Gender", ylab= "Total",
+         beside=TRUE, col=rainbow(5))
+dotchart(t(colint), color=c("red","blue","darkgreen", "purple"),
+         main="Dotchart for Autos", cex=0.8)
+         
+# Define cars vector with 5 values
+cars <- c(1, 3, 6, 4, 9)
 
+# Define some colors ideal for black & white print
+colors <- c("white","grey70","grey90","grey50","black")
 
+# Calculate the percentage for each day, rounded to one 
+# decimal place
+car_labels <- round(cars/sum(cars) * 100, 1)
 
+# Concatenate a '%' char after each value
+car_labels <- paste(car_labels, "%", sep="")
 
+# Create a pie chart with defined heading and custom colors
+# and labels
+pie(cars, main="Cars", col=colors, labels=car_labels,
+   cex=0.8)
 
+# Create a legend at the right   
+legend(1.5, 0.5, c("Mon","Tue","Wed","Thu","Fri"), cex=0.8, 
+   fill=colors)
 
