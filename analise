@@ -1,6 +1,7 @@
 library(readxl)
 data <- read_excel("C:/Users/smsanda/Pictures/data.xlsx")
 View(data)
+data<-data18
 
 
 head(data) # Print the first few, or last few, lines of a mdm object
@@ -19,27 +20,56 @@ attach(data)
 A<-data$gender # Access the values
 table(A)
 table(A, useNA = "ifany")
-prop.table(table(A))
+hist(table(A))
 summary(A)
 
 #uses the cross-classifying factors to build a contingency table of the counts at each combination of factor levels.
 B<-data$birthyear
 table(B)
 table(B, useNA = "ifany")
-prop.table(table(B))
+hist(table(B))
 summary(B)
 
 C<-data$education
 table(C)
 table(C, useNA = "ifany")
-prop.table(table(C))
+hist(table(C))
 summary(C)
 
 D<-data$country
 table(D)
 table(D, useNA = "ifany")
-prop.table(table(D))
+hist(table(D))
 summary(D)
+
+# Representação gráfica
+plot(A, B)
+hist(A,
++      breaks = 40,
++      xlab = "Birth Weight",
++      main = "Histogram of Unicorn Birth Weight")
+plot(A, B, type = "l", lty = "dashed")
+
+plot(D, B, 
+      type = "l", 
+     col = "red", 
+      lwd = 3,
+     xlab = "Year",
+      ylab = "Population Size",
+      main = "Moomin Population Size on Ruissalo 1971 - 2001")
+    
+plot(A, D,         # x variable, y variable
+     col = A,                          # colour by species
+     main = "A vs D")      # plot title    
+     
+boxplot(A, D) 
+
+barplot(A, names =D, 
+        ylim=c(0,70),xlim=c(0,4),yaxs='i', xaxs='i',
+        main="Dragon Talon Length in the UK",
+        ylab="Mean Talon Length",
+        xlab="Country")
+     
 
 mytable <- xtabs(~A+B+C+D, data=data) 
 ftable(mytable) # print table 
