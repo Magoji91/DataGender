@@ -42,6 +42,7 @@ table(D, useNA = "ifany")
 prop.table(table(D))
 summary(D)
 
+#Análise da origem, educação e idade dos homens
 colint <-select(filter(data, gender == 1),c(education, country, birthyear))
 # tally() is short-hand for summarise()
 colint %>% tally()
@@ -54,10 +55,11 @@ summary(call)
 colint %>% 
     as_data_frame %>%
     select(education, birthyear, country)
+    summary(table(colint))    
 
-P=1 - Significa uma correlação perfeita positiva entre as duas variáveis.
-P=-1 - Significa uma correlação negativa perfeita entre as duas variáveis - Isto é, se uma aumenta, a outra sempre diminui.
-P=0  - Significa que as duas variáveis não dependem linearmente uma da outra. No entanto, pode existir uma dependência não linear. Assim, o resultado deve ser investigado por outros meios.
+#P=1 - Significa uma correlação perfeita positiva entre as duas variáveis.
+#P=-1 - Significa uma correlação negativa perfeita entre as duas variáveis - Isto é, se uma aumenta, a outra sempre diminui.
+#P=0  - Significa que as duas variáveis não dependem linearmente uma da outra. No entanto, pode existir uma dependência não linear. Assim, o resultado deve ser investigado por outros meios.
 
 cor(colint)
 
@@ -68,6 +70,8 @@ cor(colint)
 
 cov(colint)
 
+
+#Análise da origem, educação e idade das mulheres
 colint2 <-select(filter(data, gender == 2),c(education, country, birthyear))
 
 # tally() is short-hand for summarise()
@@ -90,7 +94,7 @@ loglm(~A+B+C+D, mytable) #Mutual Independence: A, B, C and D are pairwise indepe
 #Subsetting data
 # Select only the variables that you are interested in.
 
-#GENERO MASCULINO - MATEMÁTICA
+#Desempenho dos homens nas questões de MATEMÁTICA
 library(dplyr)
 
 genmascmat<-select(filter(data, consent == 1, gender == 1),c(I, II, III, IV, V))
@@ -104,7 +108,7 @@ cbind(M1, M2, M3, M4, M5)
 mm<-rowSums(cbind(M1, M2, M3, M4, M5), na.rm=TRUE)
 
 
-#GENERO FEMININO - MATEMÁTICA
+#Desempenho das mulheres nas questões de MATEMÁTICA
 genfemat<-select(filter(data, consent == 1, gender == 2),c(I, II, III, IV, V))
 F1<-table(genfemat$I ==1)
 F2<-table(genfemat$II ==1)
@@ -137,7 +141,7 @@ var.test(mm, mf)
 # The p-value of F-test is p = 0.5903 which is greater than the significance level 0.05. In conclusion, there is no significant difference between the two variances
 
 
-#ANÁLISE DAS FRASES
+#ANÁLISE DA INTERPRETAÇÃO DAS FRASES
 
 # GENERO MASCULINO
 QM<-select(filter(data, consent == 1, gender == 1),c(VI, VII, VIII, IX, X, XI))
