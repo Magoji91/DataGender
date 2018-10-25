@@ -16,7 +16,7 @@ unique(data) #See unique values.
 library(MASS)
 attach(data)
 
-A<-data$gender
+A<-data$gender # Access the values
 table(A)
 table(A, useNA = "ifany")
 prop.table(table(A))
@@ -35,12 +35,17 @@ table(C, useNA = "ifany")
 prop.table(table(C))
 summary(C)
 
-
 D<-data$country
 table(D)
 table(D, useNA = "ifany")
 prop.table(table(D))
 summary(D)
+
+mytable <- xtabs(~A+B+C+D, data=data) 
+ftable(mytable) # print table 
+summary(mytable) # chi-square test of indepedence
+
+loglm(~A+B+C+D, mytable) #Mutual Independence: A, B, C and D are pairwise independent.
 
 #Análise da origem, educação e idade dos homens
 colint <-select(filter(data, gender == 1),c(education, country, birthyear))
@@ -50,12 +55,6 @@ head(colint)
 summary(colint)
 call<-table(colint)
 summary(call)
-
-#keeps only the variables you mention
-colint %>% 
-    as_data_frame %>%
-    select(education, birthyear, country)
-    summary(table(colint))    
 
 #P=1 - Significa uma correlação perfeita positiva entre as duas variáveis.
 #P=-1 - Significa uma correlação negativa perfeita entre as duas variáveis - Isto é, se uma aumenta, a outra sempre diminui.
