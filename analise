@@ -75,41 +75,14 @@ summary(mytable) # chi-square test of indepedence
 
 loglm(~A+B+C+D, mytable) #Mutual Independence: A, B, C and D are pairwise independent.
 
-#Análise da origem, educação e idade dos homens
-colint <-select(filter(data, gender == 1),c(education, country, birthyear))
-# tally() is short-hand for summarise()
-colint %>% tally()
-head(colint)
-summary(colint)
-call<-table(colint)
-summary(call)
-
 #P=1 - Significa uma correlação perfeita positiva entre as duas variáveis.
 #P=-1 - Significa uma correlação negativa perfeita entre as duas variáveis - Isto é, se uma aumenta, a outra sempre diminui.
 #P=0  - Significa que as duas variáveis não dependem linearmente uma da outra. No entanto, pode existir uma dependência não linear. Assim, o resultado deve ser investigado por outros meios.
-
-cor(colint)
 
 #Observação sobre os Resultados da Covariância
 #Quando covariância é positiva, as duas variáveis analisadas tendem a variar na mesma direção; portanto, se aumenta uma a outra tende a aumentar, ou se uma cai a outra tende a diminuir também. Logo covariância positiva indica que as duas variáveis caminham juntas mediante variações que ocorrerem.
 #Quando houver covariância negativa, neste caso há duas variáveis que tendem a variar em direções opostas; ou seja, se há aumento em uma haverá diminuição na outra, ou se uma diminui a outra tende a aumentar. concluímos que a covariância negativa afirma categoricamente que há oposição com relação aos movimentos das variáveis.
 #Quanto mais próxima de zero for a covariância obtida aplicando-se a fórmula, menor é a possibilidade de encontrar um comportamento de interdependência linear entre as variáveis.
-
-cov(colint)
-
-
-#Análise da origem, educação e idade das mulheres
-colint2 <-select(filter(data, gender == 2),c(education, country, birthyear))
-
-# tally() is short-hand for summarise()
-colint2 %>% tally()
-head(colint2)
-summary(colint2)
-call2<-table(colint2)
-summary(call2)
-
-cor(colint2)
-cov(colint2)
 
 
 #Subsetting data
@@ -204,33 +177,6 @@ t.test(MQR,FQR,paired=TRUE)
 
 var.test(MQR, FQR)
 
-# Creating a Graph
-attach(colint)
-plot(gender, education) 
-abline(lm(gender~education))
-title("Gender x Education")
-    
-plot(A, B,         # x variable, y variable
-     col = A,                          # colour by species
-     main = "A vs B")      # plot title    
-     
-boxplot(A, B) 
-boxplot(A, C)
-boxplot(A, D) 
-barplot(A, B)
-barplot(as.matrix(colint), main="Gender", ylab= "Total",
-         beside=TRUE, col=rainbow(5))
-dotchart(t(colint), color=c("red","blue","darkgreen", "purple"),
-         main="Dotchart for Autos", cex=0.8)
-         
-# Pie Chart with Percentages
-slices <- A
-lbls <- c("Men", "Women")
-pct <- round(slices/sum(slices)*100)
-lbls <- paste(lbls, pct) # add percents to labels 
-lbls <- paste(lbls,"%",sep="") # ad % to labels 
-pie(slices,labels = lbls, col=rainbow(length(lbls)),
-  	main="Pie Chart of Gender")
       
 
 
