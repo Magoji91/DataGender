@@ -5,6 +5,7 @@ View(data18)
 data<-data18
 
 library(dplyr)
+library(moments)
 
 head(data) # Print the first few, or last few, lines of a mdm object
 str(data) #check the variables / Get a summary of an object’s structure
@@ -24,21 +25,50 @@ A<-data$gender # Access the values
 table(A)
 table(A, useNA = "ifany")
 summary(A)
+sd(A) #grau de variação de um conjunto de dados
+var(A) #indicador de variabilidade dos dados X Graus de liberdade é a diferença entre a dimensão da amostra (n) e a quantidade de parâmetros a serem avaliados na população
+CVA=(sd(A)/mean(A))*100 #indica a quantidade de variação de um conjunto de dados em relação a média
+print(CVA)
+SKA = (3*(mean(A) - median(A))/(sd(A))) #Sk≈0: dados simétricos. Tanto a cauda do lado direito quanto a do lado esquerdo da função densidade de probabilidade são iguais // Sk<0: assimetria negativa. A cauda do lado esquerdo da função densidade de probabilidade é maior que a do lado direito. // Sk>0: assimetria positiva. A cauda do lado direito da função densidade de probabilidade é maior que a do lado esquerdo.
+print(SK)
+kurtosis(A0 #Ck≈0: Distribuição normal. Chamada de Curtose Mesocúrtica. // Ck<0: Cauda mais leve que a normal. Para um coeficiente de Curtose negativo, tem-se uma Curtose Platicúrtica. // Ck>0: Cauda mais pesada que a normal. Para um coeficiente de Curtose positivo, tem-se uma Curtose Leptocúrtica.
+
 
 B<-data$birthyear
 table(B)
 table(B, useNA = "ifany")
 summary(B)
+sd(B)
+var(B)
+CVB=(sd(B)/mean(B))*100
+print(CVB)
+SKB = (3*(mean(B) - median(B))/(sd(B)))
+print(SKB)
+kurtosis(B)
 
-C<-data$education
+C<-data$country
 table(C)
 table(C, useNA = "ifany")
 summary(C)
+sd(C)
+var(C)
+CVC=(sd(C)/mean(C))*100
+print(CVC)
+SKC = (3*(mean(C) - median(C))/(sd(C)))
+print(SKC)
+kurtosis(D)
 
-D<-data$country
+D<-data$education
 table(D)
 table(D, useNA = "ifany")
 summary(D)
+sd(D)
+var(D)
+CVD=(sd(D)/mean(D))*100
+print(CVD)
+SKD = (3*(mean(D) - median(D))/(sd(D)))
+print(SKD)
+kurtosis(D)
 
 #PLOTS
 
@@ -61,8 +91,6 @@ plot(data$birthyear)
 barplot(data$birthyear)
 plot(table(data$birthyear))
 barplot(table(data$birthyear))
-
-
 
 #The creation of frequency and contingency tables from categorical variables, along with tests of independence, measures of association, and methods for graphically displaying results.
 
@@ -181,26 +209,40 @@ var.test(MQR, FQR)
 library(plotrix)
 library(ggplot2)
 
-genagemasc<-select(filter(data, consent == 1, gender == 1),c(Age))
-genagefem<-select(filter(data, consent == 1, gender == 2),c(Age))
+genmasc<-data %>% filter(gender == 1, consent ==1)
+agemasc<-genmasc$Age
+edumasc<-genmasc$education
+ctymasc<-genmasc$country
 
-write.csv(matrix(as.character(genagefem),nrow=1),row.names=FALSE)
-write.csv(matrix(as.character(genagemasc),nrow=1),row.names=FALSE)
+genfem<-data %>% filter(gender == 2, consent ==1)
+agefem<-genfem$Age
+edufem<-genfem$education
+ctyfem<-genfem$country
 
-#K = 1+3.3*log(72)
+write.csv(matrix(as.numeric(agemasc),nrow=1),row.names=FALSE)
+write.csv(matrix(as.numeric(agefem),nrow=1),row.names=FALSE)
+
+summary(agemasc)
+summary(agefem)
+cov(agemasc, agefem) #medida de variabilidade conjunta dessas duas variáveis aleatórias. Quando a covariâncias entre essas variáveis é positiva os dados apresentam tendência positiva na dispersão. Quando o valor da covariância é negativo, o comportamento é análogo, no entanto, os dados apresentam tendências negativas. 
+cor(agemasc, agefem) # ASSOCIAÇÃO: Para ρ = 1, tem-se uma correlação perfeita entre as duas variáveis. Se ρ = - 1, há uma correlação perfeita entre as variáveis, no entanto, essa correlação é negativa. Caso ρ = 0, as duas variáveis não dependem linearmente uma da outra.
+
+ t.test(agemasc, agefem) #t-test, used to determine whether the means of two groups are equal to each other. The assumption for the test is that both groups are sampled from normal distributions with equal variances. The null hypothesis is that the two means are equal, and the alternative is that they are not. 
+
+#K = 1+3.3*log(77)
 h = (53-15)/7 = 6
 
-("15-17","17-19","19-21", "21-23", "23-25", "25-27", "27-29", "29-31", "31-33", "33-35", "35-37", "37-39", "39-41", "41-43", "43-45", "45-47", "47-49", "49-51", "51-53"), 
+itvagemasc<-cut(agemasc,breaks=7)
+itvagefem<-cut(agefem,breaks=7)
+print(itvagemasc)
+print(itvagefem)
 
-xy<-c(1.9, 5.3, 4.9, 2.1, 3.5, 2.9, 2.5)
-xx<-c(5.0, 4.1, 1.9, 1.9, 4.3, 1.6, 3.7)
-
-agelabels<-c("15-21","21-27","27-33","33-39","39-45","45-61","61-67")
+agelabels<-c(15,20.4), (20.4,25.9), (25.9,31.3), (31.3,36.7), (36.7,42.1), (42.1,47.6), (47.6,53))
 
 mcol<-color.gradient(c(0,0,0.5,1),c(0,0,0.5,1),c(1,1,0.5,1),7)
 fcol<-color.gradient(c(1,1,0.5,1),c(0.5,0.5,0.5,1),c(0.5,0.5,0.5,1),7)
-par(mar=pyramid.plot(xy.pop,xx.pop,labels=agelabels,main="Australian population pyramid 2002",lxcol=mcol,rxcol=fcol,gap=1,show.values=TRUE))
- 
+par(mar=pyramid.plot(xyage,xxage,labels=agelabels,main="Gender Age",lxcol=mcol,rxcol=fcol,gap=1,show.values=TRUE))
+
 
 
 
