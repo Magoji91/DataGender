@@ -92,67 +92,42 @@ barplot(data$birthyear)
 plot(table(data$birthyear))
 barplot(table(data$birthyear))
 
-#The creation of frequency and contingency tables from categorical variables, along with tests of independence, measures of association, and methods for graphically displaying results.
-
-#Generating Frequency Tables
-#R provides many methods for creating frequency and contingency tables. Three are described below. In the following examples, assume that A, B, and C represent categorical variables.  
-
-mytable <- xtabs(~A+B+C+D, data=data) 
-hist(mytable)
-summary(mytable) # chi-square test of indepedence
-
-loglm(~A+B+C+D, mytable) #Mutual Independence: A, B, C and D are pairwise independent.
-
-#P=1 - Significa uma correlação perfeita positiva entre as duas variáveis.
-#P=-1 - Significa uma correlação negativa perfeita entre as duas variáveis - Isto é, se uma aumenta, a outra sempre diminui.
-#P=0  - Significa que as duas variáveis não dependem linearmente uma da outra. No entanto, pode existir uma dependência não linear. Assim, o resultado deve ser investigado por outros meios.
-
-#Observação sobre os Resultados da Covariância
-#Quando covariância é positiva, as duas variáveis analisadas tendem a variar na mesma direção; portanto, se aumenta uma a outra tende a aumentar, ou se uma cai a outra tende a diminuir também. Logo covariância positiva indica que as duas variáveis caminham juntas mediante variações que ocorrerem.
-#Quando houver covariância negativa, neste caso há duas variáveis que tendem a variar em direções opostas; ou seja, se há aumento em uma haverá diminuição na outra, ou se uma diminui a outra tende a aumentar. concluímos que a covariância negativa afirma categoricamente que há oposição com relação aos movimentos das variáveis.
-#Quanto mais próxima de zero for a covariância obtida aplicando-se a fórmula, menor é a possibilidade de encontrar um comportamento de interdependência linear entre as variáveis.
-
-
-#Subsetting data
-# Select only the variables that you are interested in.
 
 #Desempenho dos homens nas questões de MATEMÁTICA
 library(dplyr)
 
-genmascmat<-select(filter(data, consent == 1, gender == 1),c(I, II, III, IV, V))
-M1<-table(genmascmat$I ==1)
-M2<-table(genmascmat$II ==1)
-M3<-table(genmascmat$III ==1)
-M4<-table(genmascmat$IV ==1)
-M5<-table(genmascmat$V ==1)
+genmasc<-data %>% filter(gender == 1, consent ==1)
+M1<-table(genmasc$I ==1)
+M2<-table(genmasc$II ==1)
+M3<-table(genmasc$III ==1)
+M4<-table(genmasc$IV ==1)
+M5<-table(genmasc$V ==1)
 
-cbind(M1, M2, M3, M4, M5)
 mm<-rowSums(cbind(M1, M2, M3, M4, M5), na.rm=TRUE)
 
 
 #Desempenho das mulheres nas questões de MATEMÁTICA
-genfemat<-select(filter(data, consent == 1, gender == 2),c(I, II, III, IV, V))
-F1<-table(genfemat$I ==1)
-F2<-table(genfemat$II ==1)
-F3<-table(genfemat$III ==1)
-F4<-table(genfemat$IV ==1)
-F5<-table(genfemat$V ==1)
+genfemc<-data %>% filter(gender == 2, consent ==1)
+F1<-table(genfem$I ==1)
+F2<-table(genfem$II ==1)
+F3<-table(genfem$III ==1)
+F4<-table(genfem$IV ==1)
+F5<-table(genfem$V ==1)
 
-cbind(F1, F2, F3, F4, F5)
 mf<-rowSums(cbind(F1, F2, F3, F4, F5), na.rm=TRUE)
 
 
-      Right	Wrong   
-Men	   199   201   
-WomeN  172	 173   
+      Wrong	 False   
+Men	   186    199  
+WomeN  193	   197 
 
 
 AM = matrix( 
-          c(199, 201, 172, 173), # the data elements 
+          c(186, 199, 193, 197), # the data elements 
             nrow=2,              # number of rows 
             ncol=2,              # number of columns 
              byrow = TRUE)        # fill matrix by rows 
-chisq.test(A) 
+chisq.test(AM) 
 
 t.test(mm,mf,paired=TRUE)
 
@@ -160,36 +135,35 @@ var.test(mm, mf)
 
 # A large p-value (> 0.05) indicates weak evidence against the null hypothesis, so you fail to reject the null hypothesis.
 #A negative t-value indicates a reversal in the directionality of the effect, which has no bearing on the significance of the difference between groups. Analysis of a negative t-value requires examination of its absolute value in comparison to the value on a table of t-values and degrees of freedom, which quantifies the variability of the final estimated number. If the absolute value of the experimental t-value is smaller than the value found on the degrees of freedom chart, then the means of the two groups can be said to be significantly different.
-# The p-value of F-test is p = 0.5903 which is greater than the significance level 0.05. In conclusion, there is no significant difference between the two variances
+# The p-value of F-test is p = 0.3801 which is greater than the significance level 0.05. In conclusion, there is no significant difference between the two variances
 
 
 #ANÁLISE DA INTERPRETAÇÃO DAS FRASES
 
 # GENERO MASCULINO
-QM<-select(filter(data, consent == 1, gender == 1),c(VI, VII, VIII, IX, X, XI))
-qm6<-table(QM$VI == 1)
-qm7<-table(QM$VII == 1)
-qm8<-table(QM$VIII == 1)
-qm9<-table(QM$IX == 1)
-qm10<-table(QM$X == 1)
-qm11<-table(QM$XI == 1)
+genmasc<-data %>% filter(gender == 1, consent ==1)
+qm6<-table(genmasc$VI)
+qm7<-table(genmasc$VII)
+qm8<-table(genmasc$VIII)
+qm9<-table(genmasc$IX)
+qm10<-table(genmasc$X)
+qm11<-table(genmasc$XI)
 
-cbind(qm6, qm7, qm8, qm9, qm10, qm11)
 MQR<-rowSums(cbind(qm6, qm7, qm8, qm9, qm10, qm11), na.rm=TRUE)
+head(MQR)
 
 # GENERO FEMININO
-QF<-select(filter(data, consent == 1, gender == 2),c(VI, VII, VIII, IX, X, XI))
-qm6<-table(QF$VI == 1)
-qm7<-table(QF$VII == 1)
-qm8<-table(QF$VIII == 1)
-qm9<-table(QF$IX == 1)
-qm10<-table(QF$X == 1)
-qm11<-table(QF$XI == 1)
+genfem<-select(filter(data, consent == 1, gender == 2),c(VI, VII, VIII, IX, X, XI))
+qm6<-table(genfem$VI)
+qm7<-table(genfem$VII)
+qm8<-table(genmfem$VIII)
+qm9<-table(genfem$IX)
+qm10<-table(genfem$X)
+qm11<-table(genfem$XI)
 
-cbind(qm6, qm7, qm8, qm9, qm10, qm11)
 FQR<-rowSums(cbind(qm6, qm7, qm8, qm9, qm10, qm11), na.rm=TRUE)
 
-     Right	Wrong   
+     Righ0t	Wrong   
 Men	   253   269  
 WomeN  201	 225   
 
@@ -205,7 +179,8 @@ t.test(MQR,FQR,paired=TRUE)
 
 var.test(MQR, FQR)
 
-#######
+#ANÁLISE DE GENERO PELAS VARIAVEIS IDADE E EDUCAÇÃO
+
 library(plotrix)
 library(ggplot2)
 
@@ -242,16 +217,91 @@ summary(itvagefem)
 xyage<-c(22.0, 18.1, 15.5, 6.5, 9.1, 10.4, 18.2)
 xxage<-c(14.2, 12.9, 14.2, 14.3, 20.8, 9.1, 15.6)
 
-
-agelabels<-c("15-20)", "(20-25)", "(25-30)", "(30-35)", "(40-45)", "(45-50)", "(50-55)")
+agelabels<-c("(15-20)", "(20-25)", "(25-30)", "(30-35)", "(40-45)", "(45-50)", "(50-55)")
 
 mcol<-color.gradient(c(0,0,0.5,1),c(0,0,0.5,1),c(1,1,0.5,1),7)
 fcol<-color.gradient(c(1,1,0.5,1),c(0.5,0.5,0.5,1),c(0.5,0.5,0.5,1),7)
 par(mar=pyramid.plot(xyage,xxage,labels=agelabels,main="Gender Age",lxcol=mcol,rxcol=fcol,gap=1,show.values=TRUE))
 
+edumasc<-genmasc$education
+edufem<-genfem$education
+
+write.csv(matrix(as.numeric(edumasc),nrow=1),row.names=FALSE)
+write.csv(matrix(as.numeric(edufem),nrow=1),row.names=FALSE)
+
+summary(edumasc)
+summary(edufem)
+
+K = 1+3.3*(1+log10(7.7))
+K
+H = (8-1)/K
+H
+
+itvedumasc<-cut(edumasc,breaks=7)
+itvedufem<-cut(edufem,breaks=7)
+
+summary(itvedumasc)
+summary(itvedufem)
+
+xyedu<-c(23.4,18.2,11.7,10.4,15.6,13.0,7.8)
+xxedu<-c(23.1,10.3,15.4,6.4,15.4,14.1,15.4)
+
+educationlabels<-c("(1-2)","(2-3)","(3-4)", "(4-5)","(5-6)","(6-7)","(7-8)")
+
+mcol<-color.gradient(c(0,0,0.5,1),c(0,0,0.5,1),c(1,1,0.5,1),7)
+fcol<-color.gradient(c(1,1,0.5,1),c(0.5,0.5,0.5,1),c(0.5,0.5,0.5,1),7)
+par(mar=pyramid.plot(xyedu,xxedu,labels=educationlabels,main="Gender Education",lxcol=mcol,rxcol=fcol,gap=1,show.values=TRUE))
 
 
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#The creation of frequency and contingency tables from categorical variables, along with tests of independence, measures of association, and methods for graphically displaying results.
+
+#Generating Frequency Tables
+#R provides many methods for creating frequency and contingency tables. Three are described below. In the following examples, assume that A, B, and C represent categorical variables.  
+
+mytable <- xtabs(~A+B+C+D, data=data) 
+hist(mytable)
+summary(mytable) # chi-square test of indepedence
+
+loglm(~A+B+C+D, mytable) #Mutual Independence: A, B, C and D are pairwise independent.
+
+#P=1 - Significa uma correlação perfeita positiva entre as duas variáveis.
+#P=-1 - Significa uma correlação negativa perfeita entre as duas variáveis - Isto é, se uma aumenta, a outra sempre diminui.
+#P=0  - Significa que as duas variáveis não dependem linearmente uma da outra. No entanto, pode existir uma dependência não linear. Assim, o resultado deve ser investigado por outros meios.
+
+#Observação sobre os Resultados da Covariância
+#Quando covariância é positiva, as duas variáveis analisadas tendem a variar na mesma direção; portanto, se aumenta uma a outra tende a aumentar, ou se uma cai a outra tende a diminuir também. Logo covariância positiva indica que as duas variáveis caminham juntas mediante variações que ocorrerem.
+#Quando houver covariância negativa, neste caso há duas variáveis que tendem a variar em direções opostas; ou seja, se há aumento em uma haverá diminuição na outra, ou se uma diminui a outra tende a aumentar. concluímos que a covariância negativa afirma categoricamente que há oposição com relação aos movimentos das variáveis.
+#Quanto mais próxima de zero for a covariância obtida aplicando-se a fórmula, menor é a possibilidade de encontrar um comportamento de interdependência linear entre as variáveis.
+
+
+#Subsetting data
+# Select only the variables that you are interested in.
 
