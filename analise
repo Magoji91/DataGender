@@ -153,10 +153,11 @@ MQR<-rowSums(cbind(qm6, qm7, qm8, qm9, qm10, qm11), na.rm=TRUE)
 head(MQR)
 
 # GENERO FEMININO
-genfem<-select(filter(data, consent == 1, gender == 2),c(VI, VII, VIII, IX, X, XI))
+genfem<-data %>% filter(gender == 2, consent ==1)
+
 qm6<-table(genfem$VI)
 qm7<-table(genfem$VII)
-qm8<-table(genmfem$VIII)
+qm8<-table(genfem$VIII)
 qm9<-table(genfem$IX)
 qm10<-table(genfem$X)
 qm11<-table(genfem$XI)
@@ -179,7 +180,7 @@ t.test(MQR,FQR,paired=TRUE)
 
 var.test(MQR, FQR)
 
-#ANÁLISE DE GENERO PELAS VARIAVEIS IDADE E EDUCAÇÃO
+#ANÁLISE DE GENERO PELAS VARIAVEL IDADE
 
 library(plotrix)
 library(ggplot2)
@@ -222,6 +223,9 @@ agelabels<-c("(15-20)", "(20-25)", "(25-30)", "(30-35)", "(40-45)", "(45-50)", "
 mcol<-color.gradient(c(0,0,0.5,1),c(0,0,0.5,1),c(1,1,0.5,1),7)
 fcol<-color.gradient(c(1,1,0.5,1),c(0.5,0.5,0.5,1),c(0.5,0.5,0.5,1),7)
 par(mar=pyramid.plot(xyage,xxage,labels=agelabels,main="Gender Age",lxcol=mcol,rxcol=fcol,gap=1,show.values=TRUE))
+
+
+#ANÁLISE DE GENERO PELAS VARIAVEL IDADE E EDUCAÇÃO
 
 edumasc<-genmasc$education
 edufem<-genfem$education
