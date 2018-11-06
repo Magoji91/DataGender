@@ -81,9 +81,87 @@ mutate(row.tot = sum(n))
 intm <-select(filter(colint, V17 == 1, V18 == 2, V19 == 5, V20 == 1, V21 == 4, V22 == 2 ),c(V17, V18, V19, V20, V21, V22))
 View(intm)
 
-M1 <- colint %>%
-na.omit %>% 
-filter(V24 == 1, V17 == 1, V18 == 2, V19 == 5, V20 == 1, V21 == 4, V22 == 2 )
+
+# GENERO FEMININO
+
+# PERFOMANCE MATEMÁTICA
+
+colint2 <-select(filter(data, V3 == 1, V24 == 2),c(V17, V18, V19, V20, V21, V22))
+
+# tally() is short-hand for summarise()
+colint %>% tally()
+
+# count() is a short-hand for group_by() + tally()
+colint2 %>%
+group_by (V17) %>%
+summarise (n=n()) %>%
+mutate(rel.freq = paste0(round(100 * n/sum(n), 0), "%")) %>%
+ungroup() %>%
+mutate(row.tot = sum(n))
+
+colint2 %>%
+group_by (V18) %>%
+summarise (n=n()) %>%
+mutate(rel.freq = paste0(round(100 * n/sum(n), 0), "%")) %>%
+ungroup() %>%
+mutate(row.tot = sum(n))
+
+colint2 %>%
+group_by (V19) %>%
+summarise (n=n()) %>%
+mutate(rel.freq = paste0(round(100 * n/sum(n), 0), "%")) %>%
+ungroup() %>%
+mutate(row.tot = sum(n))
+
+colint2 %>%
+group_by (V20) %>%
+summarise (n=n()) %>%
+mutate(rel.freq = paste0(round(100 * n/sum(n), 0), "%")) %>%
+ungroup() %>%
+mutate(row.tot = sum(n))
+
+colint2 %>%
+group_by (V21) %>%
+summarise (n=n()) %>%
+mutate(rel.freq = paste0(round(100 * n/sum(n), 0), "%")) %>%
+ungroup() %>%
+mutate(row.tot = sum(n))
+
+colint2 %>%
+group_by (V22) %>%
+summarise (n=n()) %>%
+mutate(rel.freq = paste0(round(100 * n/sum(n), 0), "%")) %>%
+ungroup() %>%
+mutate(row.tot = sum(n))
+
+
+intf <-select(filter(colint, V17 == 1, V18 == 2, V19 == 5, V20 == 1, V21 == 4, V22 == 2 ),c(V17, V18, V19, V20, V21, V22))
+View(intf)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 # PARTE DAS QUOTES PARA HOMENS
@@ -150,26 +228,8 @@ mutate(rel.freq = paste0(round(100 * n/sum(n), 0), "%")) %>%
 ungroup() %>%
 mutate(row.tot = sum(n))
 
-intf1 <-select(filter(colint2, V17 == 1, V18 == 2, V19 == 5, V20 == 1, V21 == 4, V22 == 2 ),c(V17, V18, V19, V20, V21, V22))
+intf <-select(filter(colint2, V17 == 1, V18 == 2, V19 == 5, V20 == 1, V21 == 4, V22 == 2 ),c(V17, V18, V19, V20, V21, V22))
 
-F1 <- colint2 %>%
-na.omit %>% 
-filter(V17 == 1, V18 == 2, V19 == 5, V20 == 1, V21 == 4, V22 == 2 )
-
-# PARTE DAS QUOTES PARA MULHERES
-
-QF <-select(filter(data, V3 == 1, V24 == 2),c(V26, V27, V28, V29, V30))
-
-# tally() is short-hand for summarise()
-QF %>% tally()
-
-# count() is a short-hand for group_by() + tally()
-QF %>%
-group_by (V26, V27, V28, V29, V30) %>%
-summarise (n=n()) %>%
-mutate(rel.freq = paste0(round(100 * n/sum(n), 0), "%")) %>%
-ungroup() %>%
-mutate(row.tot = sum(n))
 
 # CHIQUEST
 
@@ -193,9 +253,9 @@ f22<-table(colint2$V22 ==2)
 cbind(f17, f18, f19, f20, f21, f22)
 mf<-rowSums(cbind(f17, f18, f19, f20, f21, f22), na.rm=TRUE)
 
-       Right	Wrong   TOTAL
-Men	   99	  39     138
-WomeN  113	  43     156
+        Right	 Wrong    TOTAL
+Men	   99	  39      138
+Women    113	  43      156
       
 
 A = matrix( 
@@ -225,6 +285,49 @@ An F statistic is a value you get when you run an ANOVA test or a regression ana
 
 Why?
 The F value should always be used along with the p value in deciding whether your results are significant enough to reject the null hypothesis. If you get a large f value (one that is bigger than the F critical value found in a table), it means something is significant, while a small p value means all your results are significant. The F statistic just compares the joint effect of all the variables together. To put it simply, reject the null hypothesis only if your alpha level is larger than your p value.
+
+
+# PARTE DAS QUOTES PARA MULHERES
+
+QF <-select(filter(data, V3 == 1, V24 == 2),c(V26, V27, V28, V29, V30))
+
+# tally() is short-hand for summarise()
+QF %>% tally()
+
+# count() is a short-hand for group_by() + tally()
+QF %>%
+group_by (V26, V27, V28, V29, V30) %>%
+summarise (n=n()) %>%
+mutate(rel.freq = paste0(round(100 * n/sum(n), 0), "%")) %>%
+ungroup() %>%
+mutate(row.tot = sum(n))
+
+
+# PARTE DAS QUOTES PARA HOMENS
+QM <-select(filter(data, V3 == 1, V24 == 1),c(V26, V27, V28, V29, V30))
+
+# tally() is short-hand for summarise()
+QM %>% tally()
+
+# count() is a short-hand for group_by() + tally()
+QM %>%
+group_by (V26, V27, V28, V29, V30) %>%
+summarise (n=n()) %>%
+mutate(rel.freq = paste0(round(100 * n/sum(n), 0), "%")) %>%
+ungroup() %>%
+mutate(row.tot = sum(n))
+
+
+
+
+
+
+
+
+
+
+
+
 
 CHIQUEST - QUOTES
 
