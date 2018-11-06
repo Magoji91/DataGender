@@ -104,10 +104,10 @@ M4<-table(genmasc$IV ==1)
 M5<-table(genmasc$V ==1)
 
 mm<-rowSums(cbind(M1, M2, M3, M4, M5), na.rm=TRUE)
-
+head(mm)
 
 #Desempenho das mulheres nas questões de MATEMÁTICA
-genfemc<-data %>% filter(gender == 2, consent ==1)
+genfem<-data %>% filter(gender == 2, consent ==1)
 F1<-table(genfem$I ==1)
 F2<-table(genfem$II ==1)
 F3<-table(genfem$III ==1)
@@ -115,6 +115,7 @@ F4<-table(genfem$IV ==1)
 F5<-table(genfem$V ==1)
 
 mf<-rowSums(cbind(F1, F2, F3, F4, F5), na.rm=TRUE)
+head(mf)
 
 
       Wrong	 False   
@@ -143,11 +144,28 @@ var.test(mm, mf)
 # GENERO MASCULINO
 genmasc<-data %>% filter(gender == 1, consent ==1)
 qm6<-table(genmasc$VI)
+iqm6<-cut(qm6,breaks=7)
+head(iqm6)
+
 qm7<-table(genmasc$VII)
+iqm7<-cut(qm7,breaks=7)
+head(iqm7)
+
 qm8<-table(genmasc$VIII)
+iqm8<-cut(qm8,breaks=7)
+head(iqm8)
+
 qm9<-table(genmasc$IX)
+iqm9<-cut(qm9,breaks=7)
+head(iqm9)
+
 qm10<-table(genmasc$X)
+iqm10<-cut(qm10,breaks=7)
+head(iqm10)
+
 qm11<-table(genmasc$XI)
+iqm11<-cut(qm11,breaks=7)
+head(iqm11)
 
 MQR<-rowSums(cbind(qm6, qm7, qm8, qm9, qm10, qm11), na.rm=TRUE)
 head(MQR)
@@ -155,30 +173,60 @@ head(MQR)
 # GENERO FEMININO
 genfem<-data %>% filter(gender == 2, consent ==1)
 
-qm6<-table(genfem$VI)
-qm7<-table(genfem$VII)
-qm8<-table(genfem$VIII)
-qm9<-table(genfem$IX)
-qm10<-table(genfem$X)
-qm11<-table(genfem$XI)
+qf6<-table(genfem$VI)
+iqf6<-cut(qf6,breaks=7)
 
-FQR<-rowSums(cbind(qm6, qm7, qm8, qm9, qm10, qm11), na.rm=TRUE)
+qf7<-table(genfem$VII)
+iqf7<-cut(qf7,breaks=7)
 
-     Righ0t	Wrong   
-Men	   253   269  
-WomeN  201	 225   
+qf8<-table(genfem$VIII)
+iqf8<-cut(qf8,breaks=7)
 
+qf9<-table(genfem$IX)
+iqf9<-cut(qf9,breaks=7)
 
-FB = matrix( 
-     c(253, 269, 201, 225), # the data elements 
-     nrow=2,              # number of rows 
-     ncol=2,              # number of columns 
-     byrow = TRUE)        # fill matrix by rows 
-chisq.test(B) 
+qf10<-table(genfem$X)
+iqf10<-cut(qf10,breaks=7)
+
+qf11<-table(genfem$XI)
+iqf11<-cut(qf11,breaks=7)
+
+FQR<-rowSums(cbind(qf6, qf7, qf8, qf9, qf10, qf11), na.rm=TRUE)
 
 t.test(MQR,FQR,paired=TRUE)
 
 var.test(MQR, FQR)
+
+
+qtvmasc<-cut(MQR,breaks=7)
+qtvfem<-cut(FQR,breaks=7)
+
+summary(qtvmasc)
+summary(qtvfem)
+
+library(plotrix)
+library(ggplot2)
+
+xyqts<-c(18.4, 20.8, 20.1, 21.0, 19.7)
+xxqts<-c(18.2, 23.3, 21.2, 20.5, 16.9)
+
+qtslabels<-c("Strongly disagree", 	"Somewhat disagree",	"Neither Agree nor disagree",	"Somewhat agree",	"Strongly agree")
+
+mcol<-color.gradient(c(0,0,0.5,1),c(0,0,0.5,1),c(1,1,0.5,1),9)
+fcol<-color.gradient(c(1,1,0.5,1),c(0.5,0.5,0.5,1),c(0.5,0.5,0.5,1),9)
+par(mar=pyramid.plot(xyqts,xxqts,labels=qtslabels,main="Gender Quotes",lxcol=mcol,rxcol=fcol,gap=10,show.values=TRUE))
+
+pyramid.plot(xyqts,xxqts,labels=qtslabels,top.labels=c("MASCULIN","OPNION","FEMININ"),gap=4,lxcol="red",rxcol="blue", laxlab=c(0,5,10,15),raxlab=c(0,5,10,15))
+
+
+
+
+
+
+
+
+
+
 
 #ANÁLISE DE GENERO PELAS VARIAVEL IDADE
 
