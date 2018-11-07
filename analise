@@ -22,8 +22,8 @@ library(MASS)
 attach(data)
 
 A<-data$gender # Access the values
-table(A)
-table(A, useNA = "ifany")
+table(A) #table uses the cross-classifying factors to build a contingency table of the counts at each combination of factor levels.
+table(A, useNA = "ifany") #if you want to count the NA's
 summary(A)
 sd(A) #grau de variação de um conjunto de dados
 var(A) #indicador de variabilidade dos dados X Graus de liberdade é a diferença entre a dimensão da amostra (n) e a quantidade de parâmetros a serem avaliados na população
@@ -134,7 +134,7 @@ t.test(mm,mf,paired=TRUE)
 
 var.test(mm, mf)
 
-# A large p-value (> 0.05) indicates weak evidence against the null hypothesis, so you fail to reject the null hypothesis.
+# A large p-value (p> 0.05) indicates weak evidence against the null hypothesis, so you fail to reject the null hypothesis.
 #A negative t-value indicates a reversal in the directionality of the effect, which has no bearing on the significance of the difference between groups. Analysis of a negative t-value requires examination of its absolute value in comparison to the value on a table of t-values and degrees of freedom, which quantifies the variability of the final estimated number. If the absolute value of the experimental t-value is smaller than the value found on the degrees of freedom chart, then the means of the two groups can be said to be significantly different.
 # The p-value of F-test is p = 0.3801 which is greater than the significance level 0.05. In conclusion, there is no significant difference between the two variances
 
@@ -217,15 +217,6 @@ fcol<-color.gradient(c(1,1,0.5,1),c(0.5,0.5,0.5,1),c(0.5,0.5,0.5,1),9)
 par(mar=pyramid.plot(xyqts,xxqts,labels=qtslabels,main="Gender Quotes",lxcol=mcol,rxcol=fcol,gap=10,show.values=TRUE))
 
 pyramid.plot(xyqts,xxqts,labels=qtslabels,top.labels=c("MASCULIN","OPNION","FEMININ"),gap=4,lxcol="red",rxcol="blue", laxlab=c(0,5,10,15),raxlab=c(0,5,10,15))
-
-
-
-
-
-
-
-
-
 
 
 #ANÁLISE DE GENERO PELAS VARIAVEL IDADE
@@ -333,27 +324,4 @@ par(mar=pyramid.plot(xyedu,xxedu,labels=educationlabels,main="Gender Education",
 
 
 
-#The creation of frequency and contingency tables from categorical variables, along with tests of independence, measures of association, and methods for graphically displaying results.
-
-#Generating Frequency Tables
-#R provides many methods for creating frequency and contingency tables. Three are described below. In the following examples, assume that A, B, and C represent categorical variables.  
-
-mytable <- xtabs(~A+B+C+D, data=data) 
-hist(mytable)
-summary(mytable) # chi-square test of indepedence
-
-loglm(~A+B+C+D, mytable) #Mutual Independence: A, B, C and D are pairwise independent.
-
-#P=1 - Significa uma correlação perfeita positiva entre as duas variáveis.
-#P=-1 - Significa uma correlação negativa perfeita entre as duas variáveis - Isto é, se uma aumenta, a outra sempre diminui.
-#P=0  - Significa que as duas variáveis não dependem linearmente uma da outra. No entanto, pode existir uma dependência não linear. Assim, o resultado deve ser investigado por outros meios.
-
-#Observação sobre os Resultados da Covariância
-#Quando covariância é positiva, as duas variáveis analisadas tendem a variar na mesma direção; portanto, se aumenta uma a outra tende a aumentar, ou se uma cai a outra tende a diminuir também. Logo covariância positiva indica que as duas variáveis caminham juntas mediante variações que ocorrerem.
-#Quando houver covariância negativa, neste caso há duas variáveis que tendem a variar em direções opostas; ou seja, se há aumento em uma haverá diminuição na outra, ou se uma diminui a outra tende a aumentar. concluímos que a covariância negativa afirma categoricamente que há oposição com relação aos movimentos das variáveis.
-#Quanto mais próxima de zero for a covariância obtida aplicando-se a fórmula, menor é a possibilidade de encontrar um comportamento de interdependência linear entre as variáveis.
-
-
-#Subsetting data
-# Select only the variables that you are interested in.
 
