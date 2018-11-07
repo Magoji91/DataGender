@@ -172,7 +172,7 @@ pwr.t.test(
        power = 0.90,               # 1 minus Type II probability
        type = "two.sample",        # Change for one- or two-sample
        alternative = "two.sided")
-
+       
 
 #ANÁLISE DA INTERPRETAÇÃO DAS FRASES
 
