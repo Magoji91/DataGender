@@ -289,7 +289,6 @@ pwr.t.test(
        type = "two.sample",        # Change for one- or two-sample
        alternative = "two.sided")
 
- 
 
 #ANÁLISE DE GENERO PELAS VARIAVEL IDADE
 
