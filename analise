@@ -138,6 +138,41 @@ var.test(mm, mf)
 #A negative t-value indicates a reversal in the directionality of the effect, which has no bearing on the significance of the difference between groups. Analysis of a negative t-value requires examination of its absolute value in comparison to the value on a table of t-values and degrees of freedom, which quantifies the variability of the final estimated number. If the absolute value of the experimental t-value is smaller than the value found on the degrees of freedom chart, then the means of the two groups can be said to be significantly different.
 # The p-value of F-test is p = 0.3801 which is greater than the significance level 0.05. In conclusion, there is no significant difference between the two variances
 
+write.csv(matrix(as.numeric(mm),nrow=1),row.names=FALSE)
+write.csv(matrix(as.numeric(mf),nrow=1),row.names=FALSE)
+
+var.test(mm,mf)
+#qf(p, df.num, df.den)
+qf(0.95, 1, 1)
+
+#We obtained p-value greater than 0.05, then we can assume that the two variances are homogeneous. Indeed we can compare the value of F obtained with the tabulated value of F for alpha = 0.05, degrees of freedom of numerator = 4, and degrees of freedom of denominator = 4, using the function qf(p, df.num, df.den): Note that the value of F computed is less than the tabulated value of F, which leads us to accept the null hypothesis of homogeneity of variances.
+
+
+t.test(mm,mf, var.equal=TRUE, paired=FALSE)
+qt(0.975, 2)
+qt(0.95, 2)
+
+#We obtained p-value greater than 0.05, then we can conclude that the averages of two groups are significantly similar. Indeed the value of t-computed is less than the tabulated t-value for 8 degrees of freedom, which in R we can calculate:
+This confirms that we can accept the null hypothesis H0 of equality of the means.
+
+
+M1<-mean(mm)                      # Mean for sample 1
+M2<-mean(mf)                      # Mean for sample 2
+S1<-sd(mm)                    # Std dev for sample 1
+S2<-sd(mf)                      # Std dev for sample 2
+
+Cohen.d <- (M1 - M2)/sqrt(((S1^2) + (S2^2))/2)  
+                                         
+library(pwr)
+                                   
+pwr.t.test(
+       n = NULL,                   # Observations in _each_ group
+       d = Cohen.d,            
+       sig.level = 0.05,           # Type I probability
+       power = 0.90,               # 1 minus Type II probability
+       type = "two.sample",        # Change for one- or two-sample
+       alternative = "two.sided")
+
 
 #ANÁLISE DA INTERPRETAÇÃO DAS FRASES
 
@@ -237,6 +272,24 @@ qt(0.95, 8)
 This confirms that we can accept the null hypothesis H0 of equality of the means.
 
 
+M1<-mean(MQR)                      # Mean for sample 1
+M2<-mean(FQR)                      # Mean for sample 2
+S1<-sd(MQR)                    # Std dev for sample 1
+S2<-sd(FQR)                      # Std dev for sample 2
+
+Cohen.d <- (M1 - M2)/sqrt(((S1^2) + (S2^2))/2)  
+                                         
+library(pwr)
+                                   
+pwr.t.test(
+       n = NULL,                   # Observations in _each_ group
+       d = Cohen.d,            
+       sig.level = 0.05,           # Type I probability
+       power = 0.90,               # 1 minus Type II probability
+       type = "two.sample",        # Change for one- or two-sample
+       alternative = "two.sided")
+
+ 
 
 #ANÁLISE DE GENERO PELAS VARIAVEL IDADE
 
@@ -262,6 +315,24 @@ cov(agemasc, agefem) #medida de variabilidade conjunta dessas duas variáveis al
 cor(agemasc, agefem) # ASSOCIAÇÃO: Para ρ = 1, tem-se uma correlação perfeita entre as duas variáveis. Se ρ = - 1, há uma correlação perfeita entre as variáveis, no entanto, essa correlação é negativa. Caso ρ = 0, as duas variáveis não dependem linearmente uma da outra.
 
 t.test(agemasc, agefem) #t-test, used to determine whether the means of two groups are equal to each other. The assumption for the test is that both groups are sampled from normal distributions with equal variances. The null hypothesis is that the two means are equal, and the alternative is that they are not. 
+
+M1<-mean(agemasc)                      # Mean for sample 1
+M2<-mean(agefem)                      # Mean for sample 2
+S1<-sd(agemasc)                    # Std dev for sample 1
+S2<-sd(agefem)                      # Std dev for sample 2
+
+Cohen.d <- (M1 - M2)/sqrt(((S1^2) + (S2^2))/2)  
+                                         
+library(pwr)
+                                   
+pwr.t.test(
+       n = NULL,                   # Observations in _each_ group
+       d = Cohen.d,            
+       sig.level = 0.05,           # Type I probability
+       power = 0.90,               # 1 minus Type II probability
+       type = "two.sample",        # Change for one- or two-sample
+       alternative = "two.sided")
+
 
 K = 1+3.3*(1+log10(7.7))
 K
@@ -306,6 +377,23 @@ qt(0.975, 152.27)
 
 #We obtained p-value greater than 0.05, then we can conclude that the averages of two groups are significantly similar. Indeed the value of t-computed is less than the tabulated t-value for 18 degrees of freedom, which in R we can calculate:
 This confirms that we can accept the null hypothesis H0 of equality of the means.
+
+M1<-mean(edumasc)                      # Mean for sample 1
+M2<-mean(edufem)                      # Mean for sample 2
+S1<-sd(edumasc)                    # Std dev for sample 1
+S2<-sd(edufem)                      # Std dev for sample 2
+
+Cohen.d <- (M1 - M2)/sqrt(((S1^2) + (S2^2))/2)  
+                                         
+library(pwr)
+                                   
+pwr.t.test(
+       n = NULL,                   # Observations in _each_ group
+       d = Cohen.d,            
+       sig.level = 0.05,           # Type I probability
+       power = 0.90,               # 1 minus Type II probability
+       type = "two.sample",        # Change for one- or two-sample
+       alternative = "two.sided")
 
 K = 1+3.3*(1+log10(7.7))
 K
