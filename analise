@@ -145,6 +145,10 @@ var.test(mm, mf)
 write.csv(matrix(as.numeric(mm),nrow=1),row.names=FALSE)
 write.csv(matrix(as.numeric(mf),nrow=1),row.names=FALSE)
 
+cov(mm, mf) #medida de variabilidade conjunta dessas duas variáveis aleatórias. Quando a covariâncias entre essas variáveis é positiva os dados apresentam tendência positiva na dispersão. Quando o valor da covariância é negativo, o comportamento é análogo, no entanto, os dados apresentam tendências negativas. 
+cor(mm, mf) # ASSOCIAÇÃO: Para ρ = 1, tem-se uma correlação perfeita entre as duas variáveis. Se ρ = - 1, há uma correlação perfeita entre as variáveis, no entanto, essa correlação é negativa. Caso ρ = 0, as duas variáveis não dependem linearmente uma da outra.
+
+
 var.test(mm,mf)
 #qf(p, df.num, df.den)
 qf(0.95, 1, 1)
@@ -269,6 +273,11 @@ pyramid.plot(xyqts,xxqts,labels=qtslabels,top.labels=c("MASCULIN","OPNION","FEMI
 write.csv(matrix(as.numeric(FQR),nrow=1),row.names=FALSE)
 write.csv(matrix(as.numeric(MQR),nrow=1),row.names=FALSE)
 
+cov(MQR, FQR) #medida de variabilidade conjunta dessas duas variáveis aleatórias. Quando a covariâncias entre essas variáveis é positiva os dados apresentam tendência positiva na dispersão. Quando o valor da covariância é negativo, o comportamento é análogo, no entanto, os dados apresentam tendências negativas. 
+cor(MQR, FQR) # ASSOCIAÇÃO: Para ρ = 1, tem-se uma correlação perfeita entre as duas variáveis. Se ρ = - 1, há uma correlação perfeita entre as variáveis, no entanto, essa correlação é negativa. Caso ρ = 0, as duas variáveis não dependem linearmente uma da outra.
+
+
+
 var.test(MQR,FQR)
 #qf(p, df.num, df.den)
 qf(0.95, 4, 4)
@@ -322,8 +331,6 @@ write.csv(matrix(as.numeric(agefem),nrow=1),row.names=FALSE)
 
 summary(agemasc)
 summary(agefem)
-cov(agemasc, agefem) #medida de variabilidade conjunta dessas duas variáveis aleatórias. Quando a covariâncias entre essas variáveis é positiva os dados apresentam tendência positiva na dispersão. Quando o valor da covariância é negativo, o comportamento é análogo, no entanto, os dados apresentam tendências negativas. 
-cor(agemasc, agefem) # ASSOCIAÇÃO: Para ρ = 1, tem-se uma correlação perfeita entre as duas variáveis. Se ρ = - 1, há uma correlação perfeita entre as variáveis, no entanto, essa correlação é negativa. Caso ρ = 0, as duas variáveis não dependem linearmente uma da outra.
 
 t.test(agemasc, agefem) #t-test, used to determine whether the means of two groups are equal to each other. The assumption for the test is that both groups are sampled from normal distributions with equal variances. The null hypothesis is that the two means are equal, and the alternative is that they are not. 
 
@@ -419,6 +426,10 @@ summary(itvedufem)
 
 xyedu<-c(23.4,18.2,11.7,10.4,15.6,13.0,7.8)
 xxedu<-c(23.1,10.3,15.4,6.4,15.4,14.1,15.4)
+
+cov(xyedu, xxedu) #medida de variabilidade conjunta dessas duas variáveis aleatórias. Quando a covariâncias entre essas variáveis é positiva os dados apresentam tendência positiva na dispersão. Quando o valor da covariância é negativo, o comportamento é análogo, no entanto, os dados apresentam tendências negativas. 
+cor(xyedu, xxedu) # ASSOCIAÇÃO: Para ρ = 1, tem-se uma correlação perfeita entre as duas variáveis. Se ρ = - 1, há uma correlação perfeita entre as variáveis, no entanto, essa correlação é negativa. Caso ρ = 0, as duas variáveis não dependem linearmente uma da outra.
+
 
 educationlabels<-c("(1-2)","(2-3)","(3-4)", "(4-5)","(5-6)","(6-7)","(7-8)")
 
