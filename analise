@@ -140,8 +140,7 @@ var.test(mm, mf)
 
 #p <= alpha: reject H0, different distribution.
 #p > alpha: fail to reject H0, same distribution.
-#Type I Error. Reject the null hypothesis when there is in fact no significant effect (false positive). The p-value is optimistically small.
-#Type II Error. Not reject the null hypothesis when there is a significant effect (false negative). The p-value is pessimistically large.
+
 
 write.csv(matrix(as.numeric(mm),nrow=1),row.names=FALSE)
 write.csv(matrix(as.numeric(mf),nrow=1),row.names=FALSE)
@@ -158,13 +157,16 @@ qt(0.975, 2)
 qt(0.95, 2)
 
 #We obtained p-value greater than 0.05, then we can conclude that the averages of two groups are significantly similar. Indeed the value of t-computed is less than the tabulated t-value for 8 degrees of freedom, which in R we can calculate:
-This confirms that we can accept the null hypothesis H0 of equality of the means.
+#This confirms that we can accept the null hypothesis H0 of equality of the means.
 
 #Statistical power: the power of a hypothesis test is the probability that the test correctly rejects the null hypothesis. Statistical power has relevance only when the null is false.
 #The higher the statistical power for a given experiment, the lower the probability of making a Type II (false negative) error.
 #Low Statistical Power: Large risk of committing Type II errors, e.g. a false negative.
 #High Statistical Power: Small risk of committing Type II errors.
 #Resuming: Power analysis answers questions like “how much statistical power does my study have?” and “how big a sample size do I need?”.
+
+#Type I Error. Reject the null hypothesis when there is in fact no significant effect (false positive). The p-value is optimistically small.
+#Type II Error. Not reject the null hypothesis when there is a significant effect (false negative). The p-value is pessimistically large.
 
 M1<-mean(mm)                      # Mean for sample 1
 M2<-mean(mf)                      # Mean for sample 2
