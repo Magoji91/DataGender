@@ -290,7 +290,7 @@ qt(0.975, 8)
 qt(0.95, 8)
 
 #We obtained p-value greater than 0.05, then we can conclude that the averages of two groups are significantly similar. Indeed the value of t-computed is less than the tabulated t-value for 8 degrees of freedom, which in R we can calculate:
-This confirms that we can accept the null hypothesis H0 of equality of the means.
+#This confirms that we can accept the null hypothesis H0 of equality of the means.
 
 
 M1<-mean(MQR)                      # Mean for sample 1
