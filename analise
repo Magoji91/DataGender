@@ -33,7 +33,6 @@ SKA = (3*(mean(A) - median(A))/(sd(A))) #Sk≈0: dados simétricos. Tanto a caud
 print(SKA)
 kurtosis(A) #Ck≈0: Distribuição normal. Chamada de Curtose Mesocúrtica. // Ck<0: Cauda mais leve que a normal. Para um coeficiente de Curtose negativo, tem-se uma Curtose Platicúrtica. // Ck>0: Cauda mais pesada que a normal. Para um coeficiente de Curtose positivo, tem-se uma Curtose Leptocúrtica.
 
-
 B<-data$birthyear
 table(B)
 table(B, useNA = "ifany")
@@ -148,7 +147,6 @@ write.csv(matrix(as.numeric(mf),nrow=1),row.names=FALSE)
 cov(mm, mf) #medida de variabilidade conjunta dessas duas variáveis aleatórias. Quando a covariâncias entre essas variáveis é positiva os dados apresentam tendência positiva na dispersão. Quando o valor da covariância é negativo, o comportamento é análogo, no entanto, os dados apresentam tendências negativas. 
 cor(mm, mf) # ASSOCIAÇÃO: Para ρ = 1, tem-se uma correlação perfeita entre as duas variáveis. Se ρ = - 1, há uma correlação perfeita entre as variáveis, no entanto, essa correlação é negativa. Caso ρ = 0, as duas variáveis não dependem linearmente uma da outra.
 
-
 var.test(mm,mf)
 #qf(p, df.num, df.den)
 qf(0.95, 1, 1)
@@ -219,7 +217,6 @@ iqm11<-cut(qm11,breaks=7)
 head(iqm11)
 
 MQR<-rowSums(cbind(qm6, qm7, qm8, qm9, qm10, qm11), na.rm=TRUE)
-head(MQR)
 
 # GENERO FEMININO
 genfem<-data %>% filter(gender == 2, consent ==1)
@@ -276,14 +273,11 @@ write.csv(matrix(as.numeric(MQR),nrow=1),row.names=FALSE)
 cov(MQR, FQR) #medida de variabilidade conjunta dessas duas variáveis aleatórias. Quando a covariâncias entre essas variáveis é positiva os dados apresentam tendência positiva na dispersão. Quando o valor da covariância é negativo, o comportamento é análogo, no entanto, os dados apresentam tendências negativas. 
 cor(MQR, FQR) # ASSOCIAÇÃO: Para ρ = 1, tem-se uma correlação perfeita entre as duas variáveis. Se ρ = - 1, há uma correlação perfeita entre as variáveis, no entanto, essa correlação é negativa. Caso ρ = 0, as duas variáveis não dependem linearmente uma da outra.
 
-
-
 var.test(MQR,FQR)
 #qf(p, df.num, df.den)
 qf(0.95, 4, 4)
 
 #We obtained p-value greater than 0.05, then we can assume that the two variances are homogeneous. Indeed we can compare the value of F obtained with the tabulated value of F for alpha = 0.05, degrees of freedom of numerator = 4, and degrees of freedom of denominator = 4, using the function qf(p, df.num, df.den): Note that the value of F computed is less than the tabulated value of F, which leads us to accept the null hypothesis of homogeneity of variances.
-
 
 t.test(MQR,FQR, var.equal=TRUE, paired=FALSE)
 qt(0.975, 8)
@@ -291,7 +285,6 @@ qt(0.95, 8)
 
 #We obtained p-value greater than 0.05, then we can conclude that the averages of two groups are significantly similar. Indeed the value of t-computed is less than the tabulated t-value for 8 degrees of freedom, which in R we can calculate:
 #This confirms that we can accept the null hypothesis H0 of equality of the means.
-
 
 M1<-mean(MQR)                      # Mean for sample 1
 M2<-mean(FQR)                      # Mean for sample 2
