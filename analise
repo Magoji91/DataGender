@@ -22,16 +22,16 @@ library(MASS)
 attach(data)
 
 A<-data$gender # Access the values
-table(A) #table uses the cross-classifying factors to build a contingency table of the counts at each combination of factor levels.
+table(A) #Table uses the cross-classifying factors to build a contingency table of the counts at each combination of factor levels.
 table(A, useNA = "ifany") #if you want to count the NA's
 summary(A)
-sd(A) #grau de variação de um conjunto de dados
-var(A) #indicador de variabilidade dos dados X Graus de liberdade é a diferença entre a dimensão da amostra (n) e a quantidade de parâmetros a serem avaliados na população
-CVA=(sd(A)/mean(A))*100 #indica a quantidade de variação de um conjunto de dados em relação a média
+sd(A) #degree of variation of a set of data
+var(A) #Data variability indicator X Degrees of freedom is the difference between the sample size (n) and the number of parameters to be evaluated in the population
+CVA=(sd(A)/mean(A))*100 #Indicates the amount of variation of a data set in relation to the mean
 print(CVA)
-SKA = (3*(mean(A) - median(A))/(sd(A))) #Sk≈0: dados simétricos. Tanto a cauda do lado direito quanto a do lado esquerdo da função densidade de probabilidade são iguais // Sk<0: assimetria negativa. A cauda do lado esquerdo da função densidade de probabilidade é maior que a do lado direito. // Sk>0: assimetria positiva. A cauda do lado direito da função densidade de probabilidade é maior que a do lado esquerdo.
+SKA = (3*(mean(A) - median(A))/(sd(A))) ## Sk≈0: symmetric data. Both the right-hand and left-hand tail of the probability density function are equal // Sk <0: negative asymmetry. The tail on the left side of the probability density function is larger than the right side. // Sk> 0: positive asymmetry. The right-hand tail of the probability density function is larger than the left-hand tail.
 print(SKA)
-kurtosis(A) #Ck≈0: Distribuição normal. Chamada de Curtose Mesocúrtica. // Ck<0: Cauda mais leve que a normal. Para um coeficiente de Curtose negativo, tem-se uma Curtose Platicúrtica. // Ck>0: Cauda mais pesada que a normal. Para um coeficiente de Curtose positivo, tem-se uma Curtose Leptocúrtica.
+kurtosis(A) #Ck0: Normal distribution. Called Mestosurgery. // Ck <0: Tail lighter than normal. For a coefficient of negative Curtose, we have a Curtose Platicúrtica. // Ck> 0: Tail heavier than normal. For a positive Curtosis coefficient, we have a Leptokurtic Curtosis.
 
 B<-data$birthyear
 table(B)
@@ -92,7 +92,7 @@ plot(table(data$birthyear))
 barplot(table(data$birthyear))
 
 
-#Desempenho dos homens nas questões de MATEMÁTICA
+#Men's Performance in MATHEMATICS
 library(dplyr)
 
 genmasc<-data %>% filter(gender == 1, consent ==1)
@@ -105,7 +105,7 @@ M5<-table(genmasc$V ==1)
 mm<-rowSums(cbind(M1, M2, M3, M4, M5), na.rm=TRUE)
 head(mm)
 
-#Desempenho das mulheres nas questões de MATEMÁTICA
+#Performance of women's performance in MATHEMATICS
 genfem<-data %>% filter(gender == 2, consent ==1)
 F1<-table(genfem$I ==1)
 F2<-table(genfem$II ==1)
@@ -144,8 +144,8 @@ var.test(mm, mf)
 write.csv(matrix(as.numeric(mm),nrow=1),row.names=FALSE)
 write.csv(matrix(as.numeric(mf),nrow=1),row.names=FALSE)
 
-cov(mm, mf) #medida de variabilidade conjunta dessas duas variáveis aleatórias. Quando a covariâncias entre essas variáveis é positiva os dados apresentam tendência positiva na dispersão. Quando o valor da covariância é negativo, o comportamento é análogo, no entanto, os dados apresentam tendências negativas. 
-cor(mm, mf) # ASSOCIAÇÃO: Para ρ = 1, tem-se uma correlação perfeita entre as duas variáveis. Se ρ = - 1, há uma correlação perfeita entre as variáveis, no entanto, essa correlação é negativa. Caso ρ = 0, as duas variáveis não dependem linearmente uma da outra.
+cov(mm, mf) # measure of joint variability of these two random variables. When the covariance between these variables is positive, the data show a positive trend in dispersion. When the covariance value is negative, the behavior is analogous, however, the data present negative trends. 
+cor(mm, mf) #ASSOCIATION: For ρ = 1, there is a perfect correlation between the two variables. If ρ = - 1, there is a perfect correlation between the variables, however, this correlation is negative. If ρ = 0, the two variables do not depend linearly on each other.
 
 var.test(mm,mf)
 #qf(p, df.num, df.den)
@@ -188,9 +188,9 @@ pwr.t.test(
        alternative = "two.sided")
        
 
-#ANÁLISE DA INTERPRETAÇÃO DAS FRASES
+#ANALYSIS OF THE INTERPRETATION OF THE PHRASES
 
-# GENERO MASCULINO
+#MALE GENDER
 genmasc<-data %>% filter(gender == 1, consent ==1)
 qm6<-table(genmasc$VI)
 iqm6<-cut(qm6,breaks=7)
@@ -218,7 +218,7 @@ head(iqm11)
 
 MQR<-rowSums(cbind(qm6, qm7, qm8, qm9, qm10, qm11), na.rm=TRUE)
 
-# GENERO FEMININO
+# FEMALE GENDER
 genfem<-data %>% filter(gender == 2, consent ==1)
 
 qf6<-table(genfem$VI)
@@ -358,6 +358,8 @@ summary(itvagefem)
 xyage<-c(22.0, 18.1, 15.5, 6.5, 9.1, 10.4, 18.2)
 xxage<-c(14.2, 12.9, 14.2, 14.3, 20.8, 9.1, 15.6)
 
+#PYRAMID PLOT
+
 agelabels<-c("(15-20)", "(20-25)", "(25-30)", "(30-35)", "(40-45)", "(45-50)", "(50-55)")
 
 mcol<-color.gradient(c(0,0,0.5,1),c(0,0,0.5,1),c(1,1,0.5,1),7)
@@ -423,7 +425,7 @@ xxedu<-c(23.1,10.3,15.4,6.4,15.4,14.1,15.4)
 cov(xyedu, xxedu) #medida de variabilidade conjunta dessas duas variáveis aleatórias. Quando a covariâncias entre essas variáveis é positiva os dados apresentam tendência positiva na dispersão. Quando o valor da covariância é negativo, o comportamento é análogo, no entanto, os dados apresentam tendências negativas. 
 cor(xyedu, xxedu) # ASSOCIAÇÃO: Para ρ = 1, tem-se uma correlação perfeita entre as duas variáveis. Se ρ = - 1, há uma correlação perfeita entre as variáveis, no entanto, essa correlação é negativa. Caso ρ = 0, as duas variáveis não dependem linearmente uma da outra.
 
-
+#PYRAMID PLOT
 educationlabels<-c("(1-2)","(2-3)","(3-4)", "(4-5)","(5-6)","(6-7)","(7-8)")
 
 mcol<-color.gradient(c(0,0,0.5,1),c(0,0,0.5,1),c(1,1,0.5,1),7)
