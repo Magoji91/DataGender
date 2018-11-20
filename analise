@@ -4,8 +4,9 @@ View(data18)
 
 data<-data18
 
-library(dplyr)
-library(moments)
+library(dplyr) #dplyr is the next iteration of plyr, focussed on tools for working with data frames (hence the d in the name). It has three main goals: Identify the most important data manipulation tools needed for data analysis and make them easy to use from R. Provide blazing fast performance for in-memory data by writing key pieces in C++. Use the same interface to work with data no matter where it's stored, whether in a data frame, a data table or database.
+
+library(moments)#Functions to calculate: moments, Pearson's kurtosis, Geary's kurtosis and skewness; tests related to them (Anscombe-Glynn, D'Agostino, Bonett-Seier).
 
 head(data) # Print the first few, or last few, lines of a mdm object
 str(data) #check the variables / Get a summary of an object’s structure
@@ -177,7 +178,7 @@ S2<-sd(mf)                      # Std dev for sample 2
 
 Cohen.d <- (M1 - M2)/sqrt(((S1^2) + (S2^2))/2)  
                                          
-library(pwr)
+library(pwr)#Power analysis functions along the lines of Cohen (1988).
                                    
 pwr.t.test(
        n = NULL,                   # Observations in _each_ group
@@ -252,8 +253,8 @@ qtvfem<-cut(FQR,breaks=7)
 summary(qtvmasc)
 summary(qtvfem)
 
-library(plotrix)
-library(ggplot2)
+library(plotrix)#Lots of plots, various labeling, axis and color scaling functions.
+library(ggplot2)# A system for 'declaratively' creating graphics, based on "The Grammar of Graphics"
 
 xyqts<-c(18.4, 20.8, 20.1, 21.0, 19.7)
 xxqts<-c(18.2, 23.3, 21.2, 20.5, 16.9)
@@ -270,8 +271,9 @@ pyramid.plot(xyqts,xxqts,labels=qtslabels,top.labels=c("MASCULIN","OPNION","FEMI
 write.csv(matrix(as.numeric(FQR),nrow=1),row.names=FALSE)
 write.csv(matrix(as.numeric(MQR),nrow=1),row.names=FALSE)
 
-cov(MQR, FQR) #medida de variabilidade conjunta dessas duas variáveis aleatórias. Quando a covariâncias entre essas variáveis é positiva os dados apresentam tendência positiva na dispersão. Quando o valor da covariância é negativo, o comportamento é análogo, no entanto, os dados apresentam tendências negativas. 
-cor(MQR, FQR) # ASSOCIAÇÃO: Para ρ = 1, tem-se uma correlação perfeita entre as duas variáveis. Se ρ = - 1, há uma correlação perfeita entre as variáveis, no entanto, essa correlação é negativa. Caso ρ = 0, as duas variáveis não dependem linearmente uma da outra.
+
+cov (MQR, FQR) # joint measure of variability of these two random variables. When the covariance between these variables is positive, the data show a positive trend in dispersion. When the covariance value is negative, the behavior is analogous, however, the data present negative trends.
+color (MQR, FQR) # ASSOCIATION: For ρ = 1, there is a perfect correlation between the two variables. If ρ = - 1, there is a perfect correlation between the variables, however, this correlation is negative. If ρ = 0, the two variables do not depend linearly on each other.
 
 var.test(MQR,FQR)
 #qf(p, df.num, df.den)
@@ -304,7 +306,7 @@ pwr.t.test(
        alternative = "two.sided")
 
 
-#ANÁLISE DE GENERO PELAS VARIAVEL IDADE
+#ANALYSIS OF GENERATION BY THE VARIABLE AGE
 
 library(plotrix)
 library(ggplot2)
@@ -422,8 +424,8 @@ summary(itvedufem)
 xyedu<-c(23.4,18.2,11.7,10.4,15.6,13.0,7.8)
 xxedu<-c(23.1,10.3,15.4,6.4,15.4,14.1,15.4)
 
-cov(xyedu, xxedu) #medida de variabilidade conjunta dessas duas variáveis aleatórias. Quando a covariâncias entre essas variáveis é positiva os dados apresentam tendência positiva na dispersão. Quando o valor da covariância é negativo, o comportamento é análogo, no entanto, os dados apresentam tendências negativas. 
-cor(xyedu, xxedu) # ASSOCIAÇÃO: Para ρ = 1, tem-se uma correlação perfeita entre as duas variáveis. Se ρ = - 1, há uma correlação perfeita entre as variáveis, no entanto, essa correlação é negativa. Caso ρ = 0, as duas variáveis não dependem linearmente uma da outra.
+cov (xyedu, xxedu) # joint measure of variability of these two random variables. When the covariance between these variables is positive, the data show a positive trend in dispersion. When the covariance value is negative, the behavior is analogous, however, the data present negative trends.
+color (xyedu, xxedu) # ASSOCIATION: For ρ = 1, there is a perfect correlation between the two variables. If ρ = - 1, there is a perfect correlation between the variables, however, this correlation is negative. If ρ = 0, the two variables do not depend linearly on each other.
 
 #PYRAMID PLOT
 educationlabels<-c("(1-2)","(2-3)","(3-4)", "(4-5)","(5-6)","(6-7)","(7-8)")
