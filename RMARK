@@ -1,0 +1,493 @@
+---
+title: "GENDER STUDY"
+author: "SMS"
+date: "22 de November de 2018"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+##THE STUDY
+The study will be conducted using an online test distributed amongst users of Facebook. It will be presented as a study on cognitive skills of different population groups. The manipulated variable is the type of instruction. The test will be the type of Non-threatening - the test is referred to as a series of puzzles that relate to reasoning, multitasking and calculation skills.
+
+The Math performance will be assessed using 6 questions from an SAT problem solving test. Gender and degree of belief in the negative stereotype about females’ math abilities (measured with several questions using a 5-point Likert scale) are determined after the test to avoid pre-activating the stereotype. 
+
+Participants after the mathematical tests should analyze some phrases from famous authors about stereotypes.
+
+Before the test, participants will indicate their age, educational level, country of residence and if they consent about the terms of the research. Participants will be debriefed about the real purpose of the study on the public research page when the study is over.
+
+Questions of math from the Collegeboard.org (https://collegereadiness.collegeboard.org/sat/inside-the-test/study-guide-students)
+Quotes from the site: https://www.goodreads.com/quotes/
+
+
+Introduction:
+Birth Age: 
+
+Gender: 
+1(MALE) 
+2(FEMALE)
+
+Educational level:
+
+Less than high school	1
+High school diploma or equivalent	2
+Some college, no degree	3
+Associate’s degree	4
+Bachelor’s degree	5
+Master’s degree	6
+Doctoral or professional degree	7
+Professional degree (JD, MD)	8
+
+
+Country: 
+
+Algeria	1
+Angola	2
+Botswana	3
+Burkina Faso	4
+Burundi	5
+Cameroon	6
+Central African Republic	7
+Chad	8
+Congo DR	9
+Congo RO	10
+Egypt	11
+Eritrea	12
+Ethiopia	13
+Gambia	14
+Ghana	15
+Guinea	16
+Guinea-Bissau	17
+Ivory Coast	18
+Kenya	19
+Lesotho	20
+Liberia	21
+Libya	22
+Madagascar	23
+Malawi	24
+Mauritania	25
+Morocco (Western Sahara)	26
+Mozambique	27
+Namibia	28
+Niger	29
+Nigeria	30
+Rwanda	31
+Senegal	32
+Sierra Leone	33
+Somalia	34
+South Africa	35
+Sudan	36
+Swaziland	37
+Tanzania	38
+Togo	39
+Tunisia	40
+Zambia	41
+Zimbabwe	42
+Argentina	43
+Bahamas	44
+Barbados	45
+Belize	46
+Bolivia	47
+Brazil	48
+Canada	49
+Chile	50
+Colombia	51
+Costa Rica	52
+Cuba	53
+Dominican Republic	54
+Ecuador	55
+El Salvador	56
+Greenland	57
+Guatemala	58
+Guyana	59
+Haiti	60
+Honduras	61
+Jamaica	62
+Mexico	63
+Nicaragua	64
+Panama	65
+Paraguay	66
+Peru	67
+Suriname	68
+Trinidad and Tobago	69
+United States 	70
+Puerto Rico	71
+Uruguay	72
+Venezuela	73
+Afghanistan	74
+Bahrain	75
+Bangladesh	76
+Bhutan	77
+Cambodia	78
+China	79
+East Timor	80
+Hong Kong	81
+India	82
+Indonesia	83
+Iran	84
+Iraq	85
+Japan	86
+Jordan	87
+Kuwait	88
+Kyrgyzstan	89
+Malaysia	90
+Mongolia	91
+Myanmar	92
+Nepal	93
+North Korea	94
+Oman	95
+Pakistan	96
+Palestinian territories	97
+Philippines	98
+Qatar	99
+Saudi Arabia	100
+Singapore	101
+South Korea	102
+Sri Lanka	103
+Syria	104
+Taiwan	105
+Tajikistan	106
+Thailand	107
+Turkmenistan	108
+United Arab Emirates	109
+Uzbekistan	110
+Vietnam	111
+Yemen	112
+Albania	113
+Armenia	114
+Austria	115
+Azerbaijan	116
+Belarus	117
+Belgium	118
+Bosnia and Herzegovina	119
+Bulgaria	120
+Croatia	121
+Cyprus	122
+Czech Republic	123
+Denmark	124
+Estonia	125
+Finland	126
+France	127
+Germany (YouTube video blocking)	128
+Georgia	129
+Greece	130
+Hungary	131
+Iceland	132
+Ireland	133
+Italy	134
+Kazakhstan	135
+Latvia	136
+Lithuania	137
+Macedonia	138
+Moldova	139
+Montenegro	140
+Netherlands	141
+Poland	142
+Portugal	143
+Romania	144
+Russia	145
+Serbia	146
+Slovakia	147
+Slovenia	148
+Spain	149
+Sweden	150
+Switzerland	151
+Turkey	152
+Ukraine	153
+United Kingdom	154
+Australia	155
+Fiji	156
+New Zealand	157
+Papua New Guinea	158
+
+
+QUESTIONS ABOUT MATH
+
+RIGHT ANSWER: 1
+WRONG ANSWER: 0
+
+I-) On Friday, 320 adults and children attended a theatre. The ratio of adults to children was 6 to 10. How many children attended the show? 
+A) 40 
+B) 48 
+C) 192 
+D) 200
+
+R. Because the ratio of adults to children was 6 to 10, there were 6 adults for every 10 child. Thus, of every 6 people who attended the show, 6 were adults and 10 was a child. In fractions, 6/16 of the 320 who attended were adults and 10/16 were children. Therefore, 10/16 × 320 = 200 children attended the show, which is choice D.
+
+II-)The mean number of students per classroom, y, at Central High School can be estimated using the equation y = 0.8636x + 27.227, where x represents the number of years since 2004 and x ≤ 10. Which of the following statements is the best interpretation of the number 0.8636 in the context of this problem? 
+A) The estimated mean number of students per classroom in 2004
+B) The estimated mean number of students per classroom in 2014 
+C) The estimated yearly decrease in the mean number of students per classroom 
+D) The estimated yearly increase in the mean number of students per classroom
+
+R. Explanation: Choice D is correct. When an equation is written in the form y = mx + b, the coefficient of the x-term (in this case 0.8636) is the slope. The slope of this linear equation gives the amount that the mean number of students per classroom (represented by y) changes per year (represented by x). The slope is positive, indicating an increase in the mean number of students per classroom each year.
+
+III-) For a certain reservoir, the function f gives the water level f(n), to the nearest whole percent of capacity, on the nth day of 2016. Which of the following is the best interpretation of f(37) = 70? 
+A) The water level of the dam was at 37% capacity for 70 days in 2016.
+B) The water level of the dam was at 70% capacity for 37 days in 2016. 
+C) On the 37th day of 2016, the water level of the dam was at 70% capacity. 
+D) On the 70th day of 2016, the water level of the dam was at 37% capacity. 
+
+R. The function f gives the water level, to the whole nearest percent of capacity on the nth day of 2016. It follows that f(37) = 70 means that on the 37th day of 2016, the water level of the dam was at 70% capacity. This statement is choice C
+
+IV-)In 2014, County X had 783 miles of paved roads. Starting in 2015, the county has been building 8 miles of new paved roads each year. At this rate, if n is the number of years after 2014, which of the following functions f gives the number of miles of paved road there will be in County X? (Assume that no paved roads go out of service.) 
+A) f(n) = 8 + 783n 
+B) f(n) = 2,014 + 783n 
+C) f(n) = 783 + 8n 
+D) f(n) = 2,014 + 8n 
+
+R. This question already defines the variable and asks you to create or identify a function that describes the context. The discussion in Example 1 shows that the correct answer is choice C.
+
+V-) A voter registration drive was held in Town Y. The number of voters, V, registered T days after the drive began can be estimated by the equation V = 3,450 + 65T. What is the best interpretation of the number 65 in this equation? 
+A) The number of registered voters at the beginning of the registration drive 
+B) The number of registered voters at the end of the registration drive 
+C) The total number of voters registered during the drive 
+D) The number of voters registered each day during the drive 
+
+R. The correct answer is choice D. For each day that passes, it is the next day of the registration drive, and so T increases by 1. In the given equation, when T, the number of days after the drive began, increases by 1, V, the number of voters registered, becomes V = 3,450 + 65(T + 1) = 3,450 + 65T + 65. That is, the number of voters registered increased by 65 for each day of the drive. Therefore, 65 is the number of voters registered each day during the drive. You should note that choice A describes the number 3,450, and the numbers described by choices B and C can be found only if you know how many days the registration drive lasted; this information is not given in the question. Mastery of linear equations, systems of linear equations, and linear functions is built upon key skills such as analyzing rates and ratios. Several key skills are discussed in the next domain, Problem Solving and Data Analysis.
+
+VI-) If y = x3 + 2x + 5 and z = x2 + 7x + 1, what is 2y + z in terms of x?
+A) 3x3 + 11x + 11 
+B) 2x3 + x2 + 9x + 6 
+C) 2x3 + x2 +11x + 11
+ D) 2x3 + 2x2 +18x + 12
+
+R. Choice C is correct. Substituting the expressions equivalent to y and z into 2y + z results in the expression 2(x 3 + 2x + 5) + x 2 + 7x + 1. You must apply the distributive property to multiply x 3 + 2x + 5 by 2 and then combine the like terms in the expression.
+ 
+QUOTES ABOUT STEREOTYPE
+
+Read the quotes below and say if you:
+Strongly agree 	1
+Somewhat agree	2
+Neither Agree nor disagree	0
+Somewhat disagree	-1
+Strongly disagree 	-2
+
+
+A-) “A man's face is his autobiography. A woman's face is her work of fiction.” ― Oscar Wilde
+
+B-) “In politics, If you want anything said, ask a man. If you want anything done, ask a woman.” ― Margaret Thatcher
+
+C-) “Men learn to love the woman they are attracted to. Women learn to become attracted to the man they fall in love with.” ― Woody Allen
+
+D-) “I have not lived as a woman. I have lived as a man. I've just done what I damn well wanted to, and I've made enough money to support myself, and ain't afraid of being alone.” 
+― Katharine Hepburn
+
+E-) “You ride as a man, fight as a man, and you think as a man-""I think as a human being," she retorted hotly. "Men don't think any differently from women- they just make more noise about being able to.” ― Tamora Pierce, The Woman Who Rides Like a Man
+
+F-) “Gender identity is our internal response to a social construction that attempts to make a connection between a person’s biological makeup and their eventual role in society.” ― Sam Killermann, The Social Justice Advocate's Handbook: A Guide to Gender
+
+
+```{r study}
+
+library(readxl)
+data18 <- read_excel("C:/Users/smsanda/Pictures/data18.xlsx")
+View(data18)
+
+df<-data18 # Changing the name of the arquive for a more simple name
+
+library(dplyr) #dplyr is the next iteration of plyr, focussed on tools for working with data frames (hence the d in the name). It has three main goals: Identify the most important data manipulation tools needed for data analysis and make them easy to use from R. Provide blazing fast performance for in-memory data by writing key pieces in C++. Use the same interface to work with data no matter where it's stored, whether in a data frame, a data table or database.
+
+library(moments)#Functions to calculate: moments, Pearson's kurtosis, Geary's kurtosis and skewness; tests related to them (Anscombe-Glynn, D'Agostino, Bonett-Seier).
+
+##STUDYING THE GENERAL DATA TO SELECT THE MORE SUITABLE VARIABLES
+
+head(df) # Print the first few, or last few, lines of a mdm object
+str(df) #check the variables / Get a summary of an object’s structure
+summary(df) #Get more detailed information out a model.
+dim(df) #check dimesions ( number of row & columns) in data set
+ls(df) # List all variables in the environment.
+table(is.na(df)) # See counts of missing values
+colSums(is.na(df)) # missing value in data exploration stages.
+unique(df) #See unique values.
+pairs(df)
+```
+```{r variables}
+#Individual studies for each variable
+
+A<-df$gender # Access the values
+table(A) #Table uses the cross-classifying factors to build a contingency table of the counts at each combination of factor levels.
+table(A, useNA = "ifany") #if you want to count the NA's
+summary(A)
+sd(A) #degree of variation of a set of data
+var(A) #Data variability indicator X Degrees of freedom is the difference between the sample size (n) and the number of parameters to be evaluated in the population
+CVA=(sd(A)/mean(A))*100 #Indicates the amount of variation of a data set in relation to the mean
+print(CVA)
+SKA = (3*(mean(A) - median(A))/(sd(A))) 
+#Sk≈0: symmetric data. Both the right-hand and left-hand tail of the probability density function are equal.
+#Sk < 0: negative asymmetry. The tail on the left side of the probability density function is larger than the right side. 
+#Sk > 0: positive asymmetry. The right-hand tail of the probability density function is larger than the left-hand tail.
+print(SKA)
+kurtosis(A)
+#Ck0: Normal distribution. Called Mestosurgery. 
+#Ck < 0: Tail lighter than normal. For a coefficient of negative Curtose, we have a Curtose Platicúrtica. 
+#Ck > 0: Tail heavier than normal. For a positive Curtosis coefficient, we have a Leptokurtic Curtosis.
+
+B<-df$birthyear
+table(B)
+table(B, useNA = "ifany")
+summary(B)
+sd(B)
+var(B)
+CVB=(sd(B)/mean(B))*100
+print(CVB)
+SKB = (3*(mean(B) - median(B))/(sd(B)))
+print(SKB)
+kurtosis(B)
+
+C<-df$country
+table(C)
+table(C, useNA = "ifany")
+summary(C)
+sd(C)
+var(C)
+CVC=(sd(C)/mean(C))*100
+print(CVC)
+SKC = (3*(mean(C) - median(C))/(sd(C)))
+print(SKC)
+kurtosis(C)
+
+D<-df$education
+table(D)
+table(D, useNA = "ifany")
+summary(D)
+sd(D)
+var(D)
+CVD=(sd(D)/mean(D))*100
+print(CVD)
+SKD = (3*(mean(D) - median(D))/(sd(D)))
+print(SKD)
+kurtosis(D)
+```
+
+```{r plots}
+
+plot(A)
+barplot(A)
+plot(table(A))
+barplot(table(A))
+
+plot(B)
+barplot(B)
+plot(table(B))
+barplot(table(B))
+ 
+plot(C)
+barplot(C)
+plot(table(C))
+barplot(table(C))
+ 
+plot(D)
+barplot(D)
+plot(table(D))
+barplot(table(D))
+```
+
+```{r perfomance}
+#Men's Performance in MATHEMATICS
+library(dplyr)
+
+#SERVERING ONLY MALE GENDER PERSONS WHO CONSENTED WITH THE TERMS OF THE RESEARCH
+genmasc<-df %>% filter(gender == 1, consent ==1) 
+
+#SELECT ONLY THE CORRECT ALTERNATIVES OF EACH QUESTION
+#NOTE: THIS PART ALREADY SUBSTITUTES ON THE EXCEL WORKSHEET THE LETTERS BY NUMBERS: 0 (ERROR) AND 1 (CORRECT)
+M1<-table(genmasc$I ==1)
+M2<-table(genmasc$II ==1)
+M3<-table(genmasc$III ==1)
+M4<-table(genmasc$IV ==1)
+M5<-table(genmasc$V ==1)
+
+mm<-rowSums(cbind(M1, M2, M3, M4, M5), na.rm=TRUE)
+head(mm)
+
+#SERVERING ONLY FEMALE GENDER PERSONS WHO CONSENTED WITH THE TERMS OF THE RESEARCH
+genfem<-df %>% filter(gender == 2, consent ==1)
+#SELECT ONLY THE CORRECT ALTERNATIVES OF EACH QUESTION
+F1<-table(genfem$I ==1)
+F2<-table(genfem$II ==1)
+F3<-table(genfem$III ==1)
+F4<-table(genfem$IV ==1)
+F5<-table(genfem$V ==1)
+
+mf<-rowSums(cbind(F1, F2, F3, F4, F5), na.rm=TRUE)
+head(mf)
+
+AM = matrix( 
+          c(186, 199, 193, 197), # the data elements 
+            nrow=2,              # number of rows 
+            ncol=2,              # number of columns 
+             byrow = TRUE)        # fill matrix by rows 
+chisq.test(AM) 
+
+t.test(mm,mf,paired=TRUE)
+
+var.test(mm, mf)
+
+# A large p-value (p> 0.05) indicates weak evidence against the null hypothesis, so you fail to reject the null hypothesis.
+#A negative t-value indicates a reversal in the directionality of the effect, which has no bearing on the significance of the difference between groups. Analysis of a negative t-value requires examination of its absolute value in comparison to the value on a table of t-values and degrees of freedom, which quantifies the variability of the final estimated number. If the absolute value of the experimental t-value is smaller than the value found on the degrees of freedom chart, then the means of the two groups can be said to be significantly different.
+# The p-value of F-test is p = 0.3801 which is greater than the significance level 0.05. In conclusion, there is no significant difference between the two variances
+
+#p <= alpha: reject H0, different distribution.
+#p > alpha: fail to reject H0, same distribution.
+
+
+write.csv(matrix(as.numeric(mm),nrow=1),row.names=FALSE)
+write.csv(matrix(as.numeric(mf),nrow=1),row.names=FALSE)
+
+cov(mm, mf) # measure of joint variability of these two random variables. When the covariance between these variables is positive, the data show a positive trend in dispersion. When the covariance value is negative, the behavior is analogous, however, the data present negative trends. 
+cor(mm, mf) #ASSOCIATION: For ρ = 1, there is a perfect correlation between the two variables. If ρ = - 1, there is a perfect correlation between the variables, however, this correlation is negative. If ρ = 0, the two variables do not depend linearly on each other.
+
+var.test(mm,mf)
+#qf(p, df.num, df.den)
+qf(0.95, 1, 1)
+
+#We obtained p-value greater than 0.05, then we can assume that the two variances are homogeneous. Indeed we can compare the value of F obtained with the tabulated value of F for alpha = 0.05, degrees of freedom of numerator = 4, and degrees of freedom of denominator = 4, using the function qf(p, df.num, df.den): Note that the value of F computed is less than the tabulated value of F, which leads us to accept the null hypothesis of homogeneity of variances.
+
+
+t.test(mm,mf, var.equal=TRUE, paired=FALSE)
+qt(0.975, 2)
+qt(0.95, 2)
+
+#We obtained p-value greater than 0.05, then we can conclude that the averages of two groups are significantly similar. Indeed the value of t-computed is less than the tabulated t-value for 8 degrees of freedom, which in R we can calculate:
+#This confirms that we can accept the null hypothesis H0 of equality of the means.
+
+#Statistical power: the power of a hypothesis test is the probability that the test correctly rejects the null hypothesis. Statistical power has relevance only when the null is false.
+#The higher the statistical power for a given experiment, the lower the probability of making a Type II (false negative) error.
+#Low Statistical Power: Large risk of committing Type II errors, e.g. a false negative.
+#High Statistical Power: Small risk of committing Type II errors.
+#Resuming: Power analysis answers questions like “how much statistical power does my study have?” and “how big a sample size do I need?”.
+
+#Type I Error. Reject the null hypothesis when there is in fact no significant effect (false positive). The p-value is optimistically small.
+#Type II Error. Not reject the null hypothesis when there is a significant effect (false negative). The p-value is pessimistically large.
+
+M1<-mean(mm)                      # Mean for sample 1
+M2<-mean(mf)                      # Mean for sample 2
+S1<-sd(mm)                    # Std dev for sample 1
+S2<-sd(mf)                      # Std dev for sample 2
+
+Cohen.d <- (M1 - M2)/sqrt(((S1^2) + (S2^2))/2)
+print(Cohen.d)
+
+#The power analysis allows determining the sample size needed to detect an effect of a given size with a certain degree of confidence. Finally, it allows us to determine the probability of detecting an effect of a given size with a given confidence level, under sample size constraints. If the probability is unacceptably low, it would be wise to alter or abandon the experiment.
+
+#The following four quantities have an intimate relationship: sample size, effect size, level of significance = P (type I error) = probability of finding an effect that does not exist power = 1 - P (type II error) = probability of finding an effect that is there
+#Note: Given any three, you can determine the fourth. 
+
+
+library(pwr)#Power analysis functions along the lines of Cohen (1988).
+                                   
+pwr.t.test(
+       n = NULL,                   # Observations in _each_ group
+       d = Cohen.d,            
+       sig.level = 0.05,           # Type I probability
+       power = 0.90,               # 1 minus Type II probability
+       type = "two.sample",        # Change for one- or two-sample
+       alternative = "two.sided")
+
+#Conclusion:If I wanted to prove that: "Women who are reminded of the stereotype that women are bad at math will perform worse on a math test than women who are not reminded of that stereotype." I would need more samples and the number would be the power test done above because the p value showed that there is no significant difference between the women's and men's groups.
+#However, as my hypothesis is that men and women have similar intellectual abilities, even when reminded of their stereotypes, I do not need any more samples, since in the test both had the same performance on math questions practically.
+       
+```
+
