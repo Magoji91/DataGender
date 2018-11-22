@@ -491,3 +491,126 @@ pwr.t.test(
        
 ```
 
+```{r quotes}
+#ANALYSIS OF THE INTERPRETATION OF THE PHRASES
+
+#MALE GENDER
+genmasc<-df %>% filter(gender == 1, consent ==1)
+qm6<-table(genmasc$VI)
+iqm6<-cut(qm6,breaks=7)
+head(iqm6)
+
+qm7<-table(genmasc$VII)
+iqm7<-cut(qm7,breaks=7)
+head(iqm7)
+
+qm8<-table(genmasc$VIII)
+iqm8<-cut(qm8,breaks=7)
+head(iqm8)
+
+qm9<-table(genmasc$IX)
+iqm9<-cut(qm9,breaks=7)
+head(iqm9)
+
+qm10<-table(genmasc$X)
+iqm10<-cut(qm10,breaks=7)
+head(iqm10)
+
+qm11<-table(genmasc$XI)
+iqm11<-cut(qm11,breaks=7)
+head(iqm11)
+
+MQR<-rowSums(cbind(qm6, qm7, qm8, qm9, qm10, qm11), na.rm=TRUE)
+
+# FEMALE GENDER
+genfem<-df %>% filter(gender == 2, consent ==1)
+
+qf6<-table(genfem$VI)
+iqf6<-cut(qf6,breaks=7)
+
+qf7<-table(genfem$VII)
+iqf7<-cut(qf7,breaks=7)
+
+qf8<-table(genfem$VIII)
+iqf8<-cut(qf8,breaks=7)
+
+qf9<-table(genfem$IX)
+iqf9<-cut(qf9,breaks=7)
+
+qf10<-table(genfem$X)
+iqf10<-cut(qf10,breaks=7)
+
+qf11<-table(genfem$XI)
+iqf11<-cut(qf11,breaks=7)
+
+FQR<-rowSums(cbind(qf6, qf7, qf8, qf9, qf10, qf11), na.rm=TRUE)
+
+t.test(MQR,FQR,paired=TRUE)
+
+var.test(MQR, FQR)
+
+
+qtvmasc<-cut(MQR,breaks=7)
+qtvfem<-cut(FQR,breaks=7)
+
+summary(qtvmasc)
+summary(qtvfem)
+
+library(plotrix)#Lots of plots, various labeling, axis and color scaling functions.
+library(ggplot2)# A system for 'declaratively' creating graphics, based on "The Grammar of Graphics"
+
+xyqts<-c(18.4, 20.8, 20.1, 21.0, 19.7)
+xxqts<-c(18.2, 23.3, 21.2, 20.5, 16.9)
+
+qtslabels<-c("Strongly disagree", 	"Somewhat disagree",	"Neither Agree nor disagree",	"Somewhat agree",	"Strongly agree")
+
+mcol<-color.gradient(c(0,0,0.5,1),c(0,0,0.5,1),c(1,1,0.5,1),9)
+fcol<-color.gradient(c(1,1,0.5,1),c(0.5,0.5,0.5,1),c(0.5,0.5,0.5,1),9)
+par(mar=pyramid.plot(xyqts,xxqts,labels=qtslabels,main="Gender Quotes",lxcol=mcol,rxcol=fcol,gap=10,show.values=TRUE))
+
+pyramid.plot(xyqts,xxqts,labels=qtslabels,top.labels=c("MASCULIN","OPINION","FEMININ"),gap=4,lxcol="red",rxcol="blue", laxlab=c(0,5,10,15),raxlab=c(0,5,10,15))
+
+
+write.csv(matrix(as.numeric(FQR),nrow=1),row.names=FALSE)
+write.csv(matrix(as.numeric(MQR),nrow=1),row.names=FALSE)
+
+
+cov (MQR, FQR) # joint measure of variability of these two random variables. When the covariance between these variables is positive, the data show a positive trend in dispersion. When the covariance value is negative, the behavior is analogous, however, the data present negative trends.
+color (MQR, FQR) # ASSOCIATION: For ρ = 1, there is a perfect correlation between the two variables. If ρ = - 1, there is a perfect correlation between the variables, however, this correlation is negative. If ρ = 0, the two variables do not depend linearly on each other.
+
+var.test(MQR,FQR)
+#qf(p, df.num, df.den)
+qf(0.95, 4, 4)
+
+#We obtained p-value greater than 0.05, then we can assume that the two variances are homogeneous. Indeed we can compare the value of F obtained with the tabulated value of F for alpha = 0.05, degrees of freedom of numerator = 4, and degrees of freedom of denominator = 4, using the function qf(p, df.num, df.den): Note that the value of F computed is less than the tabulated value of F, which leads us to accept the null hypothesis of homogeneity of variances.
+
+t.test(MQR,FQR, var.equal=TRUE, paired=FALSE)
+qt(0.975, 8)
+qt(0.95, 8)
+
+#We obtained p-value greater than 0.05, then we can conclude that the averages of two groups are significantly similar. Indeed the value of t-computed is less than the tabulated t-value for 8 degrees of freedom, which in R we can calculate:
+#This confirms that we can accept the null hypothesis H0 of equality of the means.
+
+M1<-mean(MQR)                      # Mean for sample 1
+M2<-mean(FQR)                      # Mean for sample 2
+S1<-sd(MQR)                    # Std dev for sample 1
+S2<-sd(FQR)                      # Std dev for sample 2
+
+Cohen.d <- (M1 - M2)/sqrt(((S1^2) + (S2^2))/2)
+print(Cohen.d)
+
+library(pwr)
+                                   
+pwr.t.test(
+       n = NULL,                   # Observations in _each_ group
+       d = Cohen.d,            
+       sig.level = 0.05,           # Type I probability
+       power = 0.90,               # 1 minus Type II probability
+       type = "two.sample",        # Change for one- or two-sample
+       alternative = "two.sided")
+
+#CONCLUSION                                         
+       
+```
+
+
