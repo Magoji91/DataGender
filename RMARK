@@ -314,12 +314,12 @@ sd(A) #degree of variation of a set of data
 var(A) #Data variability indicator X Degrees of freedom is the difference between the sample size (n) and the number of parameters to be evaluated in the population
 CVA=(sd(A)/mean(A))*100 #Indicates the amount of variation of a data set in relation to the mean
 print(CVA)
-SKA = (3*(mean(A) - median(A))/(sd(A))) 
+SKA = (3*(mean(A) - median(A))/(sd(A))) #Sk < 0: negative asymmetry. The tail on the left side of the probability density function is larger than the right side. 
 #Sk≈0: symmetric data. Both the right-hand and left-hand tail of the probability density function are equal.
 #Sk < 0: negative asymmetry. The tail on the left side of the probability density function is larger than the right side. 
 #Sk > 0: positive asymmetry. The right-hand tail of the probability density function is larger than the left-hand tail.
 print(SKA)
-kurtosis(A)
+kurtosis(A) #Ck > 0: Tail heavier than normal. For a positive Curtosis coefficient, we have a Leptokurtic Curtosis.
 #Ck0: Normal distribution. Called Mestosurgery. 
 #Ck < 0: Tail lighter than normal. For a coefficient of negative Curtose, we have a Curtose Platicúrtica. 
 #Ck > 0: Tail heavier than normal. For a positive Curtosis coefficient, we have a Leptokurtic Curtosis.
@@ -333,8 +333,8 @@ var(B)
 CVB=(sd(B)/mean(B))*100
 print(CVB)
 SKB = (3*(mean(B) - median(B))/(sd(B)))
-print(SKB)
-kurtosis(B)
+print(SKB) #Sk < 0: negative asymmetry. The tail on the left side of the probability density function is larger than the right side. 
+kurtosis(B)#Ck > 0: Tail heavier than normal. For a positive Curtosis coefficient, we have a Leptokurtic Curtosis.
 
 C<-df$country
 table(C)
