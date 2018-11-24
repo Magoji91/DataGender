@@ -9,6 +9,9 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 ##THE STUDY
+
+The purpose of the study to the contrary is to prove that men and women possess the same intellectual ability to solve problems regardless of whether or not they believe in gender stereotypes.
+
 The study will be conducted using an online test distributed amongst users of Facebook. It will be presented as a study on cognitive skills of different population groups. The manipulated variable is the type of instruction. The test will be the type of Non-threatening - the test is referred to as a series of puzzles that relate to reasoning, multitasking and calculation skills.
 
 The Math performance will be assessed using 6 questions from an SAT problem solving test. Gender and degree of belief in the negative stereotype about females’ math abilities (measured with several questions using a 5-point Likert scale) are determined after the test to avoid pre-activating the stereotype. 
@@ -568,7 +571,7 @@ mcol<-color.gradient(c(0,0,0.5,1),c(0,0,0.5,1),c(1,1,0.5,1),9)
 fcol<-color.gradient(c(1,1,0.5,1),c(0.5,0.5,0.5,1),c(0.5,0.5,0.5,1),9)
 par(mar=pyramid.plot(xyqts,xxqts,labels=qtslabels,main="Gender Quotes",lxcol=mcol,rxcol=fcol,gap=10,show.values=TRUE))
 
-pyramid.plot(xyqts,xxqts,labels=qtslabels,top.labels=c("MASCULIN","OPINION","FEMININ"),gap=4,lxcol="red",rxcol="blue", laxlab=c(0,5,10,15),raxlab=c(0,5,10,15))
+pyramid.plot(xyqts,xxqts,labels=qtslabels,top.labels=c("MASCULIN","OPINION","FEMININ"),gap=4,lxcol="red",rxcol="blue", laxlab=c(0,5,10,15),raxlab=c(0,5,10,15), show.values=TRUE)
 
 
 write.csv(matrix(as.numeric(FQR),nrow=1),row.names=FALSE)
