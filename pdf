@@ -585,5 +585,11 @@ fcol<-color.gradient(c(1,1,0.5,1),c(0.5,0.5,0.5,1),c(0.5,0.5,0.5,1),9)
 
 pyramid.plot(xyqts,xxqts,labels=qtslabels,top.labels=c("MASCULIN","OPINION","FEMININ"),gap=12,lxcol="blue",rxcol="purple", laxlab=c(0,5,10,15),raxlab=c(0,5,10,15), show.values=TRUE)
 
+Note: that the opinions on the quotes were similar, so if we compare with the results obtained in the mathematical tests we may have reached the conclusion that the fact that individuals identify themselves or not with the stereotypes does not influence their rationality.
 
 ```
+
+CONCLUSION: This study aimed to prove that men and women have the same intellectual ability regardless of whether or not they believe in stereotypes of men and women.
+Finally, I emphasize that the intellectual capacity does not have to exist with gender, but with social and economic conditions in which the individual inserts what can be proven in a future research.
+
+
