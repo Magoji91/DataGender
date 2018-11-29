@@ -366,6 +366,42 @@ print(SKD) #Sk > 0: positive asymmetry. The right-hand tail of the probability d
 kurtosis(D) #Ck > 0: Tail heavier than normal. For a positive Curtosis coefficient, we have a Leptokurtic Curtosis.
 ```
 
+```{r edu}
+#ANALYSIS OF GENERATION BY THE VARIABLE AGE
+
+#Observation: To analyze data related to age, I had to change the date of birth to age, which I did by deducting the date of birth of the year 2018.
+
+library(plotrix)
+
+genmasc<-data %>% filter(gender == 1, consent ==1)
+agemasc<-genmasc$Age
+
+genfem<-data %>% filter(gender == 2, consent ==1)
+agefem<-genfem$Age
+
+K = 1+3.3*(1+log10(7.7))
+K
+H = (53-15)/K
+H
+
+itvagemasc<-cut(agemasc,breaks=7)
+itvagefem<-cut(agefem,breaks=7)
+summary(itvagemasc)
+summary(itvagefem)
+
+xyage<-c(22.0, 18.1, 15.5, 6.5, 9.1, 10.4, 18.2)
+xxage<-c(14.2, 12.9, 14.2, 14.3, 20.8, 9.1, 15.6)
+
+#PYRAMID PLOT
+
+agelabels<-c("(15-20)", "(20-25)", "(25-30)", "(30-35)", "(40-45)", "(45-50)", "(50-55)")
+
+mcol<-color.gradient(c(0,0,0.5,1),c(0,0,0.5,1),c(1,1,0.5,1),7)
+fcol<-color.gradient(c(1,1,0.5,1),c(0.5,0.5,0.5,1),c(0.5,0.5,0.5,1),7)
+par(mar=pyramid.plot(xyage,xxage,labels=agelabels,main="Gender Age",lxcol=mcol,rxcol=fcol,gap=1,show.values=TRUE))
+
+##Note: From the graph we can see that most of the participants of the masculine gender are in the range of 15 to 20 years; and, individuals of the feminine genre survey female in the range of 40 to 45 years.
+```
 
 
 ## The plots for each variable
