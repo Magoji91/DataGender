@@ -1,18 +1,18 @@
 ---
-title: "Data Gender"
+title: "DATAGENDER"
 author: "SMS"
-date: "24 de novembro de 2018"
+date: "1 de dezembro de 2018"
 output:
   html_document:
     df_print: paged
-  pdf_document: default
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
+##THE STUDY
 
-##THE RESEARCH
+#THE RESEARCH
       
        The purpose of the research about gender is to prove that men and women possess the same intellectual ability to solve problems regardless of whether or not they believe in gender stereotypes.
 
@@ -28,7 +28,6 @@ knitr::opts_chunk$set(echo = TRUE)
 
        Quotes from the site: https://www.goodreads.com/quotes/
 
-#STRUCTURE OF THE RESEARCH
 
 Introduction:
 Birth Age: 
@@ -76,7 +75,7 @@ Libya	22
 Madagascar	23
 Malawi	24
 Mauritania	25
-Morocco (Western Sahara)	26
+Morocco (Western Sahara)	26
 Mozambique	27
 Namibia	28
 Niger	29
@@ -120,7 +119,7 @@ Paraguay	66
 Peru	67
 Suriname	68
 Trinidad and Tobago	69
-United States 	70
+United States 	70
 Puerto Rico	71
 Uruguay	72
 Venezuela	73
@@ -178,7 +177,7 @@ Denmark	124
 Estonia	125
 Finland	126
 France	127
-Germany (YouTube video blocking)	128
+Germany (YouTube video blocking)	128
 Georgia	129
 Greece	130
 Hungary	131
@@ -263,7 +262,7 @@ C) 2x3 + x2 +11x + 11
  D) 2x3 + 2x2 +18x + 12
 
 R. Choice C is correct. Substituting the expressions equivalent to y and z into 2y + z results in the expression 2(x 3 + 2x + 5) + x 2 + 7x + 1. You must apply the distributive property to multiply x 3 + 2x + 5 by 2 and then combine the like terms in the expression.
- 
+
 QUOTES ABOUT STEREOTYPE
 
 Read the quotes below and say if you:
@@ -288,9 +287,8 @@ E-) “You ride as a man, fight as a man, and you think as a man-""I think as a 
 F-) “Gender identity is our internal response to a social construction that attempts to make a connection between a person’s biological makeup and their eventual role in society.” ― Sam Killermann, The Social Justice Advocate's Handbook: A Guide to Gender
 
 
-##Analyzing the results
-
 ```{r study}
+
 library(readxl)
 data18 <- read_excel("C:/Users/user/Documents/data18.xlsx")
 View(data18)
@@ -311,72 +309,20 @@ ls(df) # List all variables in the environment.
 table(is.na(df)) # See counts of missing values
 colSums(is.na(df)) # missing value in data exploration stages.
 unique(df) #See unique values.
-pairs(df) #A matrix of scatterplots is produced.
+pairs(df)
 ```
-
-```{r variables}
-#Individual studies for each variable
-
-A<-df$gender # Access the values
-table(A) #Table uses the cross-classifying factors to build a contingency table of the counts at each combination of factor levels.
-table(A, useNA = "ifany") #if you want to count the NA's
-summary(A)
-sd(A) #degree of variation of a set of data
-var(A) #Data variability indicator X Degrees of freedom is the difference between the sample size (n) and the number of parameters to be evaluated in the population
-CVA=(sd(A)/mean(A))*100 #Indicates the amount of variation of a data set in relation to the mean
-print(CVA)
-SKA = (3*(mean(A) - median(A))/(sd(A))) 
-print(SKA) #Sk < 0: negative asymmetry. The tail on the left side of the probability density function is larger than the right side. 
-kurtosis(A) #Ck > 0: Tail heavier than normal. For a positive Curtosis coefficient, we have a Leptokurtic Curtosis.
-
-B<-df$birthyear
-table(B)
-table(B, useNA = "ifany")
-summary(B)
-sd(B)
-var(B)
-CVB=(sd(B)/mean(B))*100
-print(CVB)
-SKB = (3*(mean(B) - median(B))/(sd(B)))
-print(SKB) #Sk < 0: negative asymmetry. The tail on the left side of the probability density function is larger than the right side. 
-kurtosis(B)#Ck > 0: Tail heavier than normal. For a positive Curtosis coefficient, we have a Leptokurtic Curtosis.
-
-C<-df$country
-table(C)
-table(C, useNA = "ifany")
-summary(C)
-sd(C)
-var(C)
-CVC=(sd(C)/mean(C))*100
-print(CVC)
-SKC = (3*(mean(C) - median(C))/(sd(C)))
-print(SKC) #Sk < 0: negative asymmetry. The tail on the left side of the probability density function is larger than the right side.
-kurtosis(C) #Ck > 0: Tail heavier than normal. For a positive Curtosis coefficient, we have a Leptokurtic Curtosis.
-
-D<-df$education
-table(D)
-table(D, useNA = "ifany")
-summary(D)
-sd(D)
-var(D)
-CVD=(sd(D)/mean(D))*100
-print(CVD)
-SKD = (3*(mean(D) - median(D))/(sd(D)))
-print(SKD) #Sk > 0: positive asymmetry. The right-hand tail of the probability density function is larger than the left-hand tail.
-kurtosis(D) #Ck > 0: Tail heavier than normal. For a positive Curtosis coefficient, we have a Leptokurtic Curtosis.
-```
-
 ```{r edu}
 #ANALYSIS OF GENERATION BY THE VARIABLE AGE
 
 #Observation: To analyze data related to age, I had to change the date of birth to age, which I did by deducting the date of birth of the year 2018.
 
 library(plotrix)
+library(dplyr)
 
-genmasc<-data %>% filter(gender == 1, consent ==1)
+genmasc<-df %>% filter(gender == 1, consent ==1)
 agemasc<-genmasc$Age
 
-genfem<-data %>% filter(gender == 2, consent ==1)
+genfem<-df %>% filter(gender == 2, consent ==1)
 agefem<-genfem$Age
 
 K = 1+3.3*(1+log10(7.7))
@@ -402,13 +348,66 @@ par(mar=pyramid.plot(xyage,xxage,labels=agelabels,main="Gender Age",lxcol=mcol,r
 
 ##Note: From the graph we can see that most of the participants of the masculine gender are in the range of 15 to 20 years; and, individuals of the feminine genre survey female in the range of 40 to 45 years.
 ```
+```{r variables}
+#Individual studies for each variable
 
+A<-df$gender # Access the values
+table(A) #Table uses the cross-classifying factors to build a contingency table of the counts at each combination of factor levels.
+table(A, useNA = "ifany") #if you want to count the NA's
+summary(A)
+sd(A) #degree of variation of a set of data
+var(A) #Data variability indicator X Degrees of freedom is the difference between the sample size (n) and the number of parameters to be evaluated in the population
+CVA=(sd(A)/mean(A))*100 #Indicates the amount of variation of a data set in relation to the mean
+print(CVA)
+SKA = (3*(mean(A) - median(A))/(sd(A))) #Sk < 0: negative asymmetry. The tail on the left side of the probability density function is larger than the right side. 
+#Sk≈0: symmetric data. Both the right-hand and left-hand tail of the probability density function are equal.
+#Sk < 0: negative asymmetry. The tail on the left side of the probability density function is larger than the right side. 
+#Sk > 0: positive asymmetry. The right-hand tail of the probability density function is larger than the left-hand tail.
+print(SKA)
+kurtosis(A) #Ck > 0: Tail heavier than normal. For a positive Curtosis coefficient, we have a Leptokurtic Curtosis.
+#Ck0: Normal distribution. Called Mestosurgery. 
+#Ck < 0: Tail lighter than normal. For a coefficient of negative Curtose, we have a Curtose Platicúrtica. 
+#Ck > 0: Tail heavier than normal. For a positive Curtosis coefficient, we have a Leptokurtic Curtosis.
 
-## The plots for each variable
+B<-df$birthyear
+table(B)
+table(B, useNA = "ifany")
+summary(B)
+sd(B)
+var(B)
+CVB=(sd(B)/mean(B))*100
+print(CVB)
+SKB = (3*(mean(B) - median(B))/(sd(B)))
+print(SKB) #Sk < 0: negative asymmetry. The tail on the left side of the probability density function is larger than the right side. 
+kurtosis(B)#Ck > 0: Tail heavier than normal. For a positive Curtosis coefficient, we have a Leptokurtic Curtosis.
 
-You can also embed plots, for example:
+C<-df$country
+table(C)
+table(C, useNA = "ifany")
+summary(C)
+sd(C)
+var(C)
+CVC=(sd(C)/mean(C))*100
+print(CVC)
+SKC = (3*(mean(C) - median(C))/(sd(C)))
+print(SKC)
+kurtosis(C)
 
-```{r plots, echo=FALSE}
+D<-df$education
+table(D)
+table(D, useNA = "ifany")
+summary(D)
+sd(D)
+var(D)
+CVD=(sd(D)/mean(D))*100
+print(CVD)
+SKD = (3*(mean(D) - median(D))/(sd(D)))
+print(SKD)
+kurtosis(D)
+```
+
+```{r plots}
+
 plot(A)
 barplot(A)
 plot(table(A))
@@ -537,10 +536,9 @@ pwr.t.test(
        
 ```
 
-
 ```{r quotes}
-#ANALYSIS OF THE INTERPRETATION OF THE PHRASE
-library(dplyr)
+
+#ANALYSIS OF THE INTERPRETATION OF THE PHRASES
 
 #MALE GENDER
 genmasc<-df %>% filter(gender == 1, consent ==1)
@@ -598,18 +596,14 @@ t.test(MQR,FQR,paired=TRUE)
 var.test(MQR, FQR)
 
 
-
 qtvmasc<-cut(MQR,breaks=7)
 qtvfem<-cut(FQR,breaks=7)
 
 summary(qtvmasc)
 summary(qtvfem)
-```
 
-#PLOT OF THE OPINION OF QUOTES
-
-```{r gquotes, echo=FALSE}
 library(plotrix)#Lots of plots, various labeling, axis and color scaling functions.
+library(ggplot2)# A system for 'declaratively' creating graphics, based on "The Grammar of Graphics"
 
 xyqts<-c(18.4, 20.8, 20.1, 21.0, 19.7)
 xxqts<-c(18.2, 23.3, 21.2, 20.5, 16.9)
@@ -618,14 +612,53 @@ qtslabels<-c("Strongly disagree", 	"Somewhat disagree",	"Neither Agree nor disag
 
 mcol<-color.gradient(c(0,0,0.5,1),c(0,0,0.5,1),c(1,1,0.5,1),9)
 fcol<-color.gradient(c(1,1,0.5,1),c(0.5,0.5,0.5,1),c(0.5,0.5,0.5,1),9)
+par(mar=pyramid.plot(xyqts,xxqts,labels=qtslabels,main="Gender Quotes",lxcol=mcol,rxcol=fcol,gap=10,show.values=TRUE))
 
-pyramid.plot(xyqts,xxqts,labels=qtslabels,top.labels=c("MASCULIN","OPINION","FEMININ"),gap=12,lxcol="blue",rxcol="purple", laxlab=c(0,5,10,15),raxlab=c(0,5,10,15), show.values=TRUE)
+pyramid.plot(xyqts,xxqts,labels=qtslabels,top.labels=c("MASCULIN","OPINION","FEMININ"),gap=4,lxcol="red",rxcol="blue", laxlab=c(0,5,10,15),raxlab=c(0,5,10,15), show.values=TRUE)
 
-Note: that the opinions on the quotes were similar, so if we compare with the results obtained in the mathematical tests we may have reached the conclusion that the fact that individuals identify themselves or not with the stereotypes does not influence their rationality.
 
-```
+write.csv(matrix(as.numeric(FQR),nrow=1),row.names=FALSE)
+write.csv(matrix(as.numeric(MQR),nrow=1),row.names=FALSE)
 
-CONCLUSION: This study aimed to prove that men and women have the same intellectual ability regardless of whether or not they believe in stereotypes of men and women.
+
+cov (MQR, FQR) # joint measure of variability of these two random variables. When the covariance between these variables is positive, the data show a positive trend in dispersion. When the covariance value is negative, the behavior is analogous, however, the data present negative trends.
+cor (MQR, FQR) # ASSOCIATION: For ρ = 1, there is a perfect correlation between the two variables. If ρ = - 1, there is a perfect correlation between the variables, however, this correlation is negative. If ρ = 0, the two variables do not depend linearly on each other.
+
+var.test(MQR,FQR)
+#qf(p, df.num, df.den)
+qf(0.95, 4, 4)
+
+#We obtained p-value greater than 0.05, then we can assume that the two variances are homogeneous. Indeed we can compare the value of F obtained with the tabulated value of F for alpha = 0.05, degrees of freedom of numerator = 4, and degrees of freedom of denominator = 4, using the function qf(p, df.num, df.den): Note that the value of F computed is less than the tabulated value of F, which leads us to accept the null hypothesis of homogeneity of variances.
+
+t.test(MQR,FQR, var.equal=TRUE, paired=FALSE)
+qt(0.975, 8)
+qt(0.95, 8)
+
+#We obtained p-value greater than 0.05, then we can conclude that the averages of two groups are significantly similar. Indeed the value of t-computed is less than the tabulated t-value for 8 degrees of freedom, which in R we can calculate:
+#This confirms that we can accept the null hypothesis H0 of equality of the means.
+
+M1<-mean(MQR)                      # Mean for sample 1
+M2<-mean(FQR)                      # Mean for sample 2
+S1<-sd(MQR)                    # Std dev for sample 1
+S2<-sd(FQR)                      # Std dev for sample 2
+
+Cohen.d <- (M1 - M2)/sqrt(((S1^2) + (S2^2))/2)
+print(Cohen.d)
+
+library(pwr)
+                                   
+pwr.t.test(
+       n = NULL,                   # Observations in _each_ group
+       d = Cohen.d,            
+       sig.level = 0.05,           # Type I probability
+       power = 0.90,               # 1 minus Type II probability
+       type = "two.sample",        # Change for one- or two-sample
+       alternative = "two.sided")
+
+#Note: that the opinions on the quotes were similar, so if we compare with the results obtained in the mathematical tests we may have reached the conclusion that the fact that individuals identify themselves or not with the stereotypes does not influence their rationality.
+#Observation: If i wanted to prove that the opinion was relevant in the results i will have to do more tests and the number os those tests are give by the power test.
+       
+```       
+##CONCLUSION: 
+This study aimed to prove that men and women have the same intellectual ability regardless of whether or not they believe in stereotypes of men and women.
 Finally, I emphasize that the intellectual capacity does not have to exist with gender, but with social and economic conditions in which the individual inserts what can be proven in a future research.
-
-
