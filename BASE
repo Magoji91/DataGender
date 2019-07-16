@@ -1,0 +1,40 @@
+# Frequências Absoluta Simples: número de ocorrências de um valor ou classe
+x => (1, 2, 3, 4, 5, 6, 7)
+y => (1, 3, 1, 2, 1, 1, 1, 1)
+
+# Frequência absoluta acumulada: quantas observações são menores ou iguais ao valor observado:
+y2 => (1, 4, 5, 7, 8, 9, 10) # (1, 1+3, 4+1, 5+2, 7+1, 8+1, 9+1)
+
+# Frequência relativa simples = frequência absoluta simples dividida pelo número de dados:
+y3 => (0.1, 0.3, 0.1, 0.2, 0.1, 0.1, 0.1, 0.1)
+
+# Frequência relativa acumulada = Frequência absoluta acumulada / n
+y4 => (0.1, 0.4, 0.5, 0.7, 0.8, 0.9, 1)
+
+# Frequência relativa é igual à divisão da frequência absoluta pela quantidade total de elementos.
+
+# Colunas composos: cada pedaço tem uma altura proporcional à frequência do respectivo valor)
+
+# Pizza = gráfico de setores: área proporcional à frequência absoluta do valor.
+
+# Histograma: barras que representam uma classe.
+
+# Polígono de frequência: barras x curva
+
+# densidade de frequência = frequência / amplitude de classe
+
+# a nova média é igual à média anterior, somada à constante "k"
+
+# Somatário X * f / f
+
+# Para cálculo da média, sempre utilize frequência simples. Pode ser absoluta ou simples.
+
+# Média ponderada = somatório de Xi x f/ n
+
+# Média geométrica: mulltiplica-se todos os dados G = raiz n somatório Xi 
+
+# Média aritmética: X = somatório X/n
+
+# Média harmônica: (1/Xi)/n
+
+# H < G < X
