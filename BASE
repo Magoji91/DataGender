@@ -38,3 +38,70 @@ y4 => (0.1, 0.4, 0.5, 0.7, 0.8, 0.9, 1)
 # Média harmônica: (1/Xi)/n
 
 # H < G < X
+
+# Mediana divide os dados em 2 partes - termo central
+x => 1, 2, 2, 2, 3, 4, 4, 5, 6, 7
+n => 10 # caso fosse ímpar a mediana faria parte do conjunto de dados
+X5 = 3
+X6 = 4
+D = 3.5 # valor pelo qual os dados giram em torno
+
+# Quartis dividem os dados em 4 partes
+
+# Moda é o termo que mais se repete - frequência simples
+Frequência da classe anterior
+Frequência da classe modal
+Frequência da classe posterior
+
+M = Linf + h * Fm - Fant / (Fm - Fant) + (Fm - Fpost)
+
+# O cálculo da moda depende da densidade de frequência
+
+# Amplitude = Mario valor - Menor valor
+
+# Desvio em relação à média aritmética é a diferença entre o valor considerado e a média aritmética da sequência numérica analisada.
+
+# Média dos desvios será sempre nula. Isto porque, havendo dispersão, teremos valores menores que a média(desvios negativos) e teremos valores maiores que a média(desvios positivos). Os valores positivos cancelam os negativos e a soma dá sempre zero.
+
+# Portanto, a média dos desvios não pode ser utilizada para comparar a dispersão de duas sequências numéricas.
+
+# DESVIO MÉDIO: calcula os desvios em relação à média aritmética.
+
+# Variância é a média dos quadrados dos desvios
+
+# Se somarmos ou subtrairmos cada elemento do conjunto de dados a uma constante "k", a variância não se altera.
+
+# Se multiplicaros cada elemento do conjunto de dados por uma constante "k", a variância fica multiplicada por k^2
+
+# Se dividirmos cada elemento do conjunto de dados por uma constante "k", a variância fica dividida por k^2
+
+
+# Variância amostral => utilizar "n - 1" 
+# Variância populacional => utilizar "n"
+
+# Desvio padrão: CV * X
+# Se somarmos uma constane "k" a cada elemento do conjunto de dados, o desvio padrão não se altera.
+# Se de cada elemento do conjunto de dados subtrairmos uma constante "k", o desvio padrão não se altera.
+# Se multiplicarmos ou dividirmos cada elemento do conjunto de dados por uma constante "k", o desvio padrão também será multiplicado ou dividido por "k".
+
+#Coeficiente de variação(medida de dispersão) é igual ao desvio padrão dividido pela média.
+
+# Para um conjunto de números positivos, a média aritmética é sempre maior ou igual à mediga geométrica
+
+# Variância relativa = quadrado do coeficiente de coeficiente de variação.
+
+# Medidas de dispersão absolutas(todas, menos coeficiente de variação e variância relativa):
+# Somas e subtrações não intereferem nas medidas de dispersão
+# Multiplicações e divisões interferem nas medidas de dispersão. Se multiplicarmos as observações por uma constante, as medidas de dispersão também serão multiplicadas por esta constante. Se dividirmos as observações por uma constante, as medidas de dispersão também serão divididas por esta constante.
+
+# Na variância, o efeito é sempre ao quadrado, ou seja, se multiplicarmos as observações por k, a variância será multiplicado por k2.
+
+# No caso da variância do desvio padrão e do desvio médio temos que se somarmos ou diminuirmos a uma constante todos os dados, todas as observações serão aumentadas e A média também será aumentadano entanto os desvios ficam inalterados.
+
+# Se multiplicarmos ou dividirmos cada valor da sequência de dados por uma constante positiva, o desvio padrão, o desvio médido e a amplitude sofrem a mesma alteração.
+
+# A variância sofre a alteração ao quadrado
+
+# Para o CV devemos analisar separadamente o que ocorre com seu numerador(desvio padrão) e com seu denominador(média).
+
+
