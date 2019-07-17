@@ -104,4 +104,22 @@ M = Linf + h * Fm - Fant / (Fm - Fant) + (Fm - Fpost)
 
 # Para o CV devemos analisar separadamente o que ocorre com seu numerador(desvio padrão) e com seu denominador(média).
 
+# igual a zero: indicativo de que o conjunto é simétrico
+# menor que zero: indicativo de que o conjunto é negativamente assimétrico
+# maior que zero: indicativo de que o conjunto é positivamente assimétrico
+
+# Coeficiente de assimetria de Pearson
+# A1 = X - M/ S
+# Se a X e a M forem bastante diferentes, então o conjunto de dados é bastante assimétrico. Se a moda for praticamente igual à média, o coeficiente de assimetria é praticamente nulo. Isto significa que a sequência é praticamente simétrica.
+
+# A2 = 3X - 3D/ S 
+# Se a X é maior que a mediana, então a sequência é assimétrica positiva e o coeficiente de assimetria acima definido será maior que zero.
+# Se a X é maior que a mediana, então a sequência é assimétrica positiva e o coeficiente de assimetria acima definido será maior que zero.
+# Se a X for menor que a mediana, então a sequência é assimétrica negativa e o coeficiene de assimetria acima será menor que zero.
+
+# Índice momento de assimetria = A3 = M3/ S^3
+
+# As medidas de curtose visam avaliar o quanto uma curva de frequências é achatada ou afilada
+A4 = m4 / S4
+k = Q3 - Q1 / 2(P90 - P10)
 
