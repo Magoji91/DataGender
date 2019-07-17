@@ -123,3 +123,24 @@ M = Linf + h * Fm - Fant / (Fm - Fant) + (Fm - Fpost)
 A4 = m4 / S4
 k = Q3 - Q1 / 2(P90 - P10)
 
+A4 = 3 => curva mesocúrtica
+A4 < 3 => curva platicúrtica
+A4 > 3 => curva leptocúrtica
+
+K = 0.263 => curva mesocúrtica
+K < 0.263 => curva platicúrtica
+K > 0.263 => curva leptocúrtica
+
+# Índice de Laspeyres: usar as quantidades do período base.
+IL = Somatório Pit x Qio / somatório Pio * Qio
+Pit = preço do produto i no período t
+Pio = preço do produto i no período 0
+Qit = quantidade do produto i no período t
+Qio = quantiadade do produto i no período 0
+
+IP =  Somatório Pit x Qit / somatório Pio * Qit
+
+# Índice de preços de Fisher: 
+
+
+# Índice de Paasche: usar as quantidades do período de interesse
