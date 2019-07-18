@@ -214,4 +214,49 @@ E(k * A) = k * E(A)
 
 # Se A e B forem independentes,vale:
   E(A x B) = E(A) x E(B)
+  
+# Esperança de "A" pode ser escrita como E(A) ou u uA
+C = A + B // D = A -B
+E(C) = E(A) + E(B)
 
+SE A e B forem independentes, então 
+H = A * B
+E(H) = E(A) * E(B)
+
+# Quando as variáveis são independentes, a esperança do produto é igual ao produto das esperanças
+I = k * A
+E(I) = E(K * A) = k * E(A)
+
+# O fato da covariância ser nula não garante que as variáveis sejam independentes
+# X e Y independentes - Cov(X, Y) = 0
+Z = X + Y
+cov(X, Y) = E[X - Ux) * (Y - Uy)
+cov(X, Y) = E[XY) - (Ux * Uy)
+Var(X + Y) = Var(X) + Var(Y) + 2 * cov(X, Y)
+
+# Se duas variáveis são independentes, então a covariância é nula. O contrário não é verdadeiro. O fafot de a ovariância ser nela não garante variáveis independentes.
+
+# A esperança da soma é sempre igual à soma das esperanças. Isso vale, mesmo que as variáveis sejam dependentes.
+
+# Coeficiente de correlação linear tem o propósito de medir o quão forte é a relação linear entre duas grandezas X e Y (-1 < X < 1) 
+
+r = cov(X, Y) / DPX * DPY
+
+cov(X, Y) = somatório X*Y / n
+
+densidade de probabilidade = probabilidade do intervalo / amplitude do intervalo
+
+Distribuição uniforme discreta: tipo mais simples de variável aleatória. É a variável em que todos os valores tem a mesma probabiliade de ocorrer.
+
+E(X) = 1/n * somatório Xi
+
+# Distribuição de Bernoulli: variável de interesse possui dois valores (0 - 1)
+V(I) = p * (1-p) = pq
+
+P(X = k) = ( n | k) * p^k * q^n-k
+
+# Se X tem distribuição binomial sua média e sua variância ficam:
+E(X) = np
+V(X) = npq
+
+# Teorema do limite central, que garante que a soma de um número grande variáveis independentes resulta numa variável, cuja distribuição é próxima da normal
