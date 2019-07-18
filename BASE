@@ -140,7 +140,78 @@ Qio = quantiadade do produto i no período 0
 
 IP =  Somatório Pit x Qit / somatório Pio * Qit
 
-# Índice de preços de Fisher: 
+# Índice de preços de Fisher: média geométrica entre os IL e IP
+IF = raiz(Ip x Il)
 
+# Correlação entre relativo de preços e relativo de quantidades
+Il/Ip = 1 - coeficiente de correlação linear * Dispersão de X * Dispersão de Y / Vendas no ano de interesse/ Vemdas mp amp base
 
-# Índice de Paasche: usar as quantidades do período de interesse
+P = nº de casos favoráveis / nº de casos possíveis
+
+P = nº de elementos do evento / nº de elementos do espaço amostral
+
+O < P < 1
+
+# Probabilidade corresponde à frequência relativa que seria obtida em um número grande de exp.
+
+P(A): Probabilidade de o evento A ocorrer
+P(B): Probabilidade de o evento B ocorrer
+P(A ^ B): Probabilidade de A e B ocorrerem simultaneamente. 
+P(A U B): Intersecção
+P(A | B): Probabilidade de o evento A ocorrer, Dado que o evento B ocorreu. É a probabilidade de A, condicionada ao acontecimento de B.
+
+P(A) = 2/6
+P(B) = 2/6
+P(A U B) = 1/6
+P(A | B) = P(A ^ B) / P(B) = 1/2
+
+P(A ^ B) = P(A | B) * P(B)
+
+P(A ^ B ^ C) = P(A) * P(B|A) * P(C|A, B)
+# Probabilidade de A ter ocorrido
+# Probabilidade de B ocorrer, dado que A já ocorreu
+# Probabilidade de C ocorrer, dado que A e B 
+
+#Probabilidade da união de dois eventos
+P(A U B) = P(A) + P(B) - P(A ^ B)
+
+# Se A e B forem mutuamente excludentes:
+P(A U B) = P(A) + P(B)
+
+# Probabilidade da União de 3 eventos
+P(A U B U C) = P(A) + P(B) + P(C) - P(A ^ B) - P(A ^ C) +  P(A ^ B ^ C)
+
+# EVENTOS INDEPENDENTES 
+P(A|B) = P(A)
+P(B|A) = P(B)
+P(A ^ B) = P(A) * P(B)
+
+# EVENTOS COMPLEMENTARES
+1 = P(A) + P(Â)
+P(Â) = 1 - P(A) 
+
+# Para calcular a probabilidade total é errado simplesmente somar as probabilidades condicionais.
+
+# Como U1 e U2 são eventos complementares, a união de ambos é igual ao espaço amostral:
+     S = U1 U S2
+     A ^ S = A
+     P(A) = P(A ^ S)
+
+# Probabilidades: P(A) = P(A ^ U1) + P(A ^ U2)
+
+# Teorema da probabilidade total: P(A) = P(A|U1) * P(U1) + P(A|U2) * P(U2)
+
+# Teorema de Bayes:
+P(A|B) = P(E|A) * P(A) / P(E|A) * P(A) + P(E|B) * P(B)
+
+# Propriedades da esperança:
+# Esperança de uma variávl aleatória é parecida com a média de um conjunto de dados
+# Sejam A e B variáveis aleatórias, e k uma constante
+E(A + B) = E(A) + E(B)
+E(A - B) = E(A) - E(B)
+E(k) = k
+E(k * A) = k * E(A)
+
+# Se A e B forem independentes,vale:
+  E(A x B) = E(A) x E(B)
+
