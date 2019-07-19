@@ -260,3 +260,71 @@ E(X) = np
 V(X) = npq
 
 # Teorema do limite central, que garante que a soma de um número grande variáveis independentes resulta numa variável, cuja distribuição é próxima da normal
+
+# A esperança da média amostral é igual à esperança da população. Isto signfica que, se fosse possível fazer um número muito grande de amostras, a média de todas as médias 
+
+E(X) = a + b/2
+V(X) = (b -a)^2/12
+
+# Variável gaussiana:
+f(x) = 1/raiz(2ii*dp^2)exp(-(x-u)^2)/2DP2
+
+# Amostragem                                                                                         Tipo
+Aleatória: cada evento tem a mesma chance de ocorrer                                           Probabilística
+Estratificada: cada extrato representa uma amostra global proporcional                         Probabilística
+Por Conglomerados: análise de todos os seus elementos(heterogêneo)                             Probabilística
+Sistemática: apresenta tendências quando há periodicidade                                      Probabilística
+Por julgamento: população com tamanho reduzido, cada elemento diferente                        Não Probabilística
+Por conveniência: poder discricionário                                                         Não Probabilística
+Por quotas: escolha por conveniência de cada amostra                                                                                    Não Probabilística
+
+# A esperança da média amostral é igual à esperança da população. Isto significa que, se fosse possível fazer um número grande de amostras, as média de todas as médias amostrais seria igual à média da população.
+
+# Variância da amostra(S^2) para estimar a variância da população(DP^2)
+S^2 = somatório(Xi - X)^2/ n-1
+
+Seja p a proporção de casos favoráveis em uma população e ^p a proporção de casos favoráveis em uma amostra.
+Ux = np
+Dp^2 = npq
+P^= X/n
+E(p^) = E(X)/n = p
+
+Z < X - u/ DPx < Zo
+
+p^ - Zo * DPp^ < p < P^ + Zo * DPp^
+
+# No lugar da média amostral(X) aparece a proporção amostral(P^)
+# No lugar do DPx da média aparece o DP da proporção amostral DPp^
+# No lugar da média populacional(u) aparece a proporção populacional(p)
+
+DPp^= raiz (pq/n)
+
+erro = X - u
+
+erro = Zo * DPx # variância populaconal conhecida
+
+erro =to * Sx # variância populaconal desconhecida
+
+y = ax^2 + bx + c
+x = -b/2a
+
+e = Zo * raiz(p^ * q^)/n
+
+P-value: probabilidade de significância. A probabilidade da variável reduzida assumir valores iguais ou mais extremos do que a estatística teste observada dado que a hipótese nula é verdadeira.
+
+P-value: área delimitada pela estatística teste
+
+Qui-quadrado: teste de hipóteses sobre proporções.
+Cálculo dos valores críticos, caso a estatística for maior que o valor crítico, rejeita-se a hipótese nula.
+
+Correlação linear: relação entre duas variáveis
+
+R^2 = SQM/SQT
+
+SQM + SQR = SQT
+
+F = QMM/QMR
+F = SQM / (P-1) / SQR/(n-p)
+
+ARIMA = autorregressivos, integrais e médas móveis
+
